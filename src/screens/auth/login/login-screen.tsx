@@ -9,8 +9,59 @@ import {
 import { BaseStyles } from "../../../common/base-styles";
 import { LoginStyles } from "./login-styles";
 import { ScreenNavigationProp } from "../../../type/type-screen";
+import {
+  RequestAuthentication,
+  ResponseAuthentication,
+} from "../../../type/type-api";
+import { SubmitErrorHandler, useForm } from "react-hook-form";
+import { InputType } from "../../../type/type";
+import { Input } from "../../../component/component-common";
+import { login } from "../../../service/AuthenticationService";
 
 const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  // Declare input
+  const email: InputType = {
+    name: "email",
+    styles: [BaseStyles.input, BaseStyles.mrBot15],
+    required: true,
+    secureTextEntry: false,
+  };
+
+  const password: InputType = {
+    name: "password",
+    styles: [BaseStyles.input, BaseStyles.mrBot15],
+    required: true,
+    secureTextEntry: true,
+  };
+
+  // handle event
+  const onSubmit = (data: any) => {
+    const reqData: RequestAuthentication = {
+      email: data.email,
+      password: data.password,
+    };
+    login(reqData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const onError: SubmitErrorHandler<RequestAuthentication> = (errors, e) => {
+    return console.log(errors);
+  };
+
   return (
     <>
       <View style={[BaseStyles.container]}>
@@ -26,6 +77,12 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
         <View style={[LoginStyles.content]}>
           <Text>WelCome!</Text>
           <View style={[LoginStyles.formatScreenLogin]}>
+            <Input inputType={email} control={control} />
+          </View>
+          <View style={[LoginStyles.formatScreenLogin]}>
+            <Input inputType={password} control={control} />
+          </View>
+          {/* <View style={[LoginStyles.formatScreenLogin]}>
             <TextInput
               style={[BaseStyles.input, BaseStyles.mrBot15]}
               placeholder="Email"
@@ -38,13 +95,13 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
               placeholder="Password"
               secureTextEntry={true}
             ></TextInput>
-          </View>
+          </View> */}
           <View
             style={[LoginStyles.formatScreenLogin, BaseStyles.boderRadius10]}
           >
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate("HomeScreen")}
+              onPress={handleSubmit(onSubmit)}
             >
               <Text style={styles.buttonText}>Login here</Text>
             </TouchableOpacity>

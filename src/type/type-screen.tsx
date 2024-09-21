@@ -27,18 +27,3 @@ export type ScreenNavigationProp = {
 //   NativeStackNavigationProp<SettingStackNavigatorParamList, "Logout">,
 //   BottomTabNavigationProp<BottomTabNavigatorParamList, "Settings">
 // >;
-
-export type CardProp = {
-  id: string;
-  image: string;
-  content: string;
-  rate: string;
-  comment: string;
-  title: string;
-  action: boolean;
-};
-
-export type SettingProp = {
-  id: string;
-  title: string;
-};

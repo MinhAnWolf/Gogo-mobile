@@ -3,12 +3,10 @@ import { BaseStyles } from "../common/base-styles";
 import { HomeStyles } from "../screens/home/home-style";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-import {
-  CardProp,
-  ScreenNavigationProp,
-  SettingProp,
-} from "../type/type-screen";
+import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
+import { Controller, useForm } from "react-hook-form";
+import { CardProp, InputType } from "../type/type";
 
 export const SearchComponent: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -129,6 +127,35 @@ export const OptionSelect: React.FC<ScreenNavigationProp> = ({
           <Text>Sign out</Text>
         </View>
       </View>
+    </>
+  );
+};
+
+export const Input = ({
+  inputType,
+  control,
+}: {
+  inputType: InputType;
+  control: any;
+}) => {
+  // https://echobind.com/post/react-hook-form-for-react-native
+  return (
+    <>
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={inputType.styles}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            value={value}
+            placeholder={inputType.name}
+            secureTextEntry={inputType.secureTextEntry}
+          />
+        )}
+        name={inputType.name}
+        rules={{ required: inputType.required }}
+      />
     </>
   );
 };
