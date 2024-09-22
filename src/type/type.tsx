@@ -5,6 +5,17 @@ export interface InputType {
   secureTextEntry: boolean;
 }
 
+export interface ModalType {
+  title?: string;
+  message?: string;
+  nameBtn?: string;
+  // status is field support declare color on button when true is color blue
+  // , false is color yellow
+  status?: boolean;
+  visible: boolean;
+  onClose: any;
+}
+
 export type CardProp = {
   id: string;
   image: string;

@@ -11,8 +11,7 @@ const BottomTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        // Thiết lập màu nền cho các màn hình
-        tabBarStyle: { backgroundColor: "white" }, // Màu nền trắng cho thanh tab
+        tabBarStyle: { backgroundColor: "white" },
       }}
     >
       <Tab.Screen

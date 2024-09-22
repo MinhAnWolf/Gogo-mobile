@@ -17,6 +17,8 @@ import { SubmitErrorHandler, useForm } from "react-hook-form";
 import { InputType } from "../../../type/type";
 import { Input } from "../../../component/component-common";
 import { login } from "../../../service/AuthenticationService";
+import { NotiModal } from "../../../component/modal/notification-modal";
+import { useState } from "react";
 
 const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   const {
@@ -27,6 +29,8 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     reset,
     formState: { errors },
   } = useForm();
+  // Declare state
+  const [modalVisible, setModalVisible] = useState(false);
 
   // Declare input
   const email: InputType = {
@@ -52,14 +56,25 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     login(reqData)
       .then((res) => {
         console.log(res);
+        openModal();
       })
       .catch((e) => {
         console.log(e);
+        openModal();
       });
   };
 
   const onError: SubmitErrorHandler<RequestAuthentication> = (errors, e) => {
     return console.log(errors);
+  };
+
+  // open-close modal
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -82,20 +97,6 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
           <View style={[LoginStyles.formatScreenLogin]}>
             <Input inputType={password} control={control} />
           </View>
-          {/* <View style={[LoginStyles.formatScreenLogin]}>
-            <TextInput
-              style={[BaseStyles.input, BaseStyles.mrBot15]}
-              placeholder="Email"
-            ></TextInput>
-          </View>
-
-          <View style={[LoginStyles.formatScreenLogin]}>
-            <TextInput
-              style={[BaseStyles.input, BaseStyles.mrBot15]}
-              placeholder="Password"
-              secureTextEntry={true}
-            ></TextInput>
-          </View> */}
           <View
             style={[LoginStyles.formatScreenLogin, BaseStyles.boderRadius10]}
           >
@@ -158,6 +159,8 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
           </Text>
         </View>
       </View>
+      {/* COMPONENT MODAL */}
+      <NotiModal visible={modalVisible} onClose={closeModal} />
     </>
   );
 };
