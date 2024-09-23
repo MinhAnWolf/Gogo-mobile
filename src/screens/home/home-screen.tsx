@@ -11,7 +11,7 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   return (
     <>
       {/* HEADER HOME SCREEN */}
-      <View style={[BaseStyles.headerContainer]}>
+      <View style={[BaseStyles.headerContainer, BaseStyles.mrTop30]}>
         <Image
           source={{
             uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",

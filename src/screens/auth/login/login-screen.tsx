@@ -53,10 +53,13 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       email: data.email,
       password: data.password,
     };
+
     login(reqData)
       .then((res) => {
-        console.log(res);
-        openModal();
+        if (res) {
+          console.log(data);
+          navigation.navigate("HomeScreen");
+        }
       })
       .catch((e) => {
         console.log(e);
@@ -160,7 +163,13 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
         </View>
       </View>
       {/* COMPONENT MODAL */}
-      <NotiModal visible={modalVisible} onClose={closeModal} />
+      <NotiModal
+        visible={modalVisible}
+        onClose={closeModal}
+        title="Sorry :("
+        message="Request failed with status code 401"
+        nameBtn="TRY AGAIN"
+      />
     </>
   );
 };
@@ -177,7 +186,7 @@ const styles = StyleSheet.create({
     textAlign: "center", // Căn giữa văn bản
   },
   buttonImg: {
-    width: 150,
+    width: 100,
     height: 50,
     borderRadius: 10, // Góc bo tròn của nút
     margin: 10,

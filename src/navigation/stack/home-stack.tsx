@@ -14,7 +14,11 @@ const HomeStackNavigator = () => {
           contentStyle: { backgroundColor: "white" },
         }}
       >
-        <HomeStack.Screen name="Home" component={HomeScreen} />
+        <HomeStack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <HomeStack.Screen
           name="SearchLocation"
           component={SearchLocationScreen}

@@ -13,6 +13,13 @@ export const BaseStyles = StyleSheet.create({
     alignItems: "center",
   },
 
+  noRowCenter: {
+    flexDirection: "row",
+    flexWrap: "nowrap",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   headerContainer: {
     width: "100%",
     height: 100,
@@ -45,6 +52,14 @@ export const BaseStyles = StyleSheet.create({
 
   mrTop20: {
     marginTop: 20,
+  },
+
+  mrTop30: {
+    marginTop: 30,
+  },
+
+  mrTop40: {
+    marginTop: 40,
   },
 
   mrTop15: {
@@ -120,5 +135,10 @@ export const BaseStyles = StyleSheet.create({
   container: {
     width: "100%",
     height: "auto",
+  },
+
+  boderFullTop10: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
 });
