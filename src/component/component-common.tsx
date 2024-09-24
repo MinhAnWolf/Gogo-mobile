@@ -2,10 +2,9 @@ import { TextInput, View, Text, Image, TouchableOpacity } from "react-native";
 import { BaseStyles } from "../common/base-styles";
 import { HomeStyles } from "../screens/home/home-style";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
 import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { CardProp, InputType } from "../type/type";
 
 export const SearchComponent: React.FC<ScreenNavigationProp> = ({
@@ -13,6 +12,7 @@ export const SearchComponent: React.FC<ScreenNavigationProp> = ({
 }) => {
   return (
     <>
+      {/* CONTAINER ICON */}
       <View style={[ComponentStyle.searchContainer]}>
         <Ionicons
           style={[ComponentStyle.searchIcon]}
@@ -21,6 +21,7 @@ export const SearchComponent: React.FC<ScreenNavigationProp> = ({
           color="black"
         />
       </View>
+      {/* CONTAINER INPUT */}
       <View>
         <TextInput
           style={BaseStyles.inputSearch}
@@ -62,16 +63,12 @@ export const Card = (cardProp: CardProp) => {
 
 export const MiniCard = () => {
   return (
-    <View style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}>
+    <View style={[ComponentStyle.categoryItem, BaseStyles.boderRadius10]}>
       <Image
         source={{
           uri: "https://png.pngtree.com/background/20210711/original/pngtree-creative-may-day-travel-tour-background-picture-image_1112606.jpg",
         }}
-        style={[
-          BaseStyles.image,
-          BaseStyles.containerRelative,
-          BaseStyles.boderRadius10,
-        ]}
+        style={[BaseStyles.image, BaseStyles.boderRadius10]}
         resizeMode="cover" // Adjust based on how you want to fit the image
       />
       <Text style={[BaseStyles.centerText]}>Hồ Chí Minh</Text>

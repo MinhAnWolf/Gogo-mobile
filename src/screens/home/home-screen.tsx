@@ -34,31 +34,39 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       {/* BODY HOME SCREEN */}
       <View style={[BaseStyles.bodyContainer]}>
         <View style={[BaseStyles.row]}>
+          {/* ROW 1 */}
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
             <MiniCard />
           </TouchableOpacity>
 
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
-          <View
-            style={[HomeStyles.categoryItem, BaseStyles.boderRadius10]}
-          ></View>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          {/* ROW 2 */}
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <MiniCard />
+          </TouchableOpacity>
         </View>
       </View>
     </>

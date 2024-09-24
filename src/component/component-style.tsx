@@ -8,12 +8,12 @@ export const ComponentStyle = StyleSheet.create({
     borderBottomLeftRadius: 10,
     marginLeft: 10,
     textAlign: "center",
-    backgroundColor: "white",
+    backgroundColor: "rgb(236, 237, 241)",
   },
 
   searchIcon: {
     marginLeft: 8,
-    marginTop: 3,
+    marginTop: 5,
   },
 
   imageCard: {
@@ -49,5 +49,13 @@ export const ComponentStyle = StyleSheet.create({
     backgroundColor: "gray",
     marginVertical: 10,
     width: "100%",
+  },
+
+  categoryItem: {
+    width: 60,
+    height: 60,
+    marginLeft: 30,
+    marginTop: 30,
+    marginBottom: 30,
   },
 });

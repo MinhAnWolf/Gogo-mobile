@@ -8,7 +8,7 @@ export const HomeStyles = StyleSheet.create({
   },
 
   categoryItem: {
-    width: 60,
+    width: "50%",
     height: 60,
     backgroundColor: "pink",
     margin: 20,

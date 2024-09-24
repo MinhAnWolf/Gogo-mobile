@@ -82,7 +82,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
   return (
     <>
-      <View style={[BaseStyles.container]}>
+      <View style={[BaseStyles.container, BaseStyles.mrTop40]}>
         <View style={[LoginStyles.header]}>
           <Image
             source={{
@@ -119,31 +119,31 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
           >
             Forgot password
           </Text>
-
+          {/* BUTTON GOOGLE AND FACEBOOK */}
           <View style={[BaseStyles.rowCenter]}>
             <TouchableOpacity
               style={styles.buttonImg}
-              onPress={() => alert("Button pressed!")}
+              onPress={() => alert("Feature develop")}
             >
               <Image
                 source={{
-                  uri: "https://t4.ftcdn.net/jpg/08/33/32/03/360_F_833320333_xQZDzRv70pr1AfPdO2hXFwOQYt7UNTxF.jpg",
+                  uri: "https://img.icons8.com/?size=100&id=17949&format=png&color=000000",
                 }}
                 style={[BaseStyles.image, BaseStyles.containerRelative]}
-                resizeMode="cover" // Adjust based on how you want to fit the image
+                resizeMode="contain" // Adjust based on how you want to fit the image
               />
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.buttonImg}
-              onPress={() => alert("Button pressed!")}
+              onPress={() => alert("Feature develop")}
             >
               <Image
                 source={{
-                  uri: "https://t4.ftcdn.net/jpg/08/33/32/03/360_F_833320333_xQZDzRv70pr1AfPdO2hXFwOQYt7UNTxF.jpg",
+                  uri: "https://img.icons8.com/?size=100&id=118497&format=png&color=000000",
                 }}
                 style={[BaseStyles.image, BaseStyles.containerRelative]}
-                resizeMode="cover" // Adjust based on how you want to fit the image
+                resizeMode="contain" // Adjust based on how you want to fit the image
               />
             </TouchableOpacity>
           </View>
@@ -176,7 +176,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#007BFF", // Màu nền của nút
+    backgroundColor: "rgb(255, 91, 45)", // Màu nền của nút
     padding: 10, // Khoảng cách bên trong nút
     borderRadius: 10, // Góc bo tròn của nút
   },
@@ -184,6 +184,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF", // Màu văn bản
     fontSize: 16, // Kích thước văn bản
     textAlign: "center", // Căn giữa văn bản
+    fontWeight: "bold",
   },
   buttonImg: {
     width: 100,

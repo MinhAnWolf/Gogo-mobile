@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Alert,
   Button,
@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Animated,
 } from "react-native";
 import { ModalType } from "../../type/type";
 import { NotiModalStyles } from "./notification-modal-styles";
@@ -22,14 +23,30 @@ export const NotiModal: React.FC<ModalType> = ({
   message,
   nameBtn,
 }) => {
+  const [opacity] = useState(new Animated.Value(0));
+  React.useEffect(() => {
+    if (visible) {
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [visible]);
   return (
     <Modal
       transparent={true}
-      animationType="slide"
+      animationType="fade"
       visible={visible}
       onRequestClose={onClose}
     >
-      <View style={NotiModalStyles.modalBackground}>
+      <Animated.View style={NotiModalStyles.modalBackground}>
         <View
           style={[NotiModalStyles.containerModal, BaseStyles.boderRadius10]}
         >
@@ -64,7 +81,7 @@ export const NotiModal: React.FC<ModalType> = ({
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </Animated.View>
     </Modal>
   );
 };
