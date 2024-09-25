@@ -6,11 +6,4 @@ export const HomeStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
-  categoryItem: {
-    width: "50%",
-    height: 60,
-    backgroundColor: "pink",
-    margin: 20,
-  },
 });

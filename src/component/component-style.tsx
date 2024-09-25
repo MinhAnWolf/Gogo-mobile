@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
 
 export const ComponentStyle = StyleSheet.create({
-  searchContainer: {
-    width: 40,
+  searchIconContainer: {
+    width: "15%",
     height: 38,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    marginLeft: 10,
     textAlign: "center",
     backgroundColor: "rgb(236, 237, 241)",
+  },
+
+  searchContainer: {
+    width: "85%",
+    height: 38,
   },
 
   searchIcon: {

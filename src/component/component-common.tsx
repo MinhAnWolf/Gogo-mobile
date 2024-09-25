@@ -12,22 +12,24 @@ export const SearchComponent: React.FC<ScreenNavigationProp> = ({
 }) => {
   return (
     <>
-      {/* CONTAINER ICON */}
-      <View style={[ComponentStyle.searchContainer]}>
-        <Ionicons
-          style={[ComponentStyle.searchIcon]}
-          name="search-outline"
-          size={25}
-          color="black"
-        />
-      </View>
-      {/* CONTAINER INPUT */}
-      <View>
-        <TextInput
-          style={BaseStyles.inputSearch}
-          placeholder="Search location here"
-          onPress={() => navigation.navigate("SearchLocation")}
-        />
+      <View style={[BaseStyles.row]}>
+        {/* CONTAINER ICON */}
+        <View style={[ComponentStyle.searchIconContainer]}>
+          <Ionicons
+            style={[ComponentStyle.searchIcon]}
+            name="search-outline"
+            size={25}
+            color="black"
+          />
+        </View>
+        {/* CONTAINER INPUT */}
+        <View style={[ComponentStyle.searchContainer]}>
+          <TextInput
+            style={BaseStyles.inputSearch}
+            placeholder="Search location here"
+            onPress={() => navigation.navigate("SearchLocation")}
+          />
+        </View>
       </View>
     </>
   );

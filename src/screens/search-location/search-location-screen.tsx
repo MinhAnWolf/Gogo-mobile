@@ -1,4 +1,10 @@
-import { View, Text, TextInput, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { BaseStyles } from "../../common/base-styles";
 import {
   Card,
@@ -6,7 +12,9 @@ import {
   SearchComponent,
 } from "../../component/component-common";
 import { SearchLocaitonStyles } from "./search-location-styles";
-import { CardProp, ScreenNavigationProp } from "../../type/type-screen";
+import { ScreenNavigationProp } from "../../type/type-screen";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { CardProp } from "../../type/type";
 
 const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -29,34 +37,30 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
   return (
     <>
-      <View style={[SearchLocaitonStyles.searchContainer]}>
-        <View style={[BaseStyles.row, BaseStyles.mrTop15]}>
-          <SearchComponent navigation={navigation} />
-
-          <Text style={[BaseStyles.mr10]}>Hủy</Text>
-        </View>
-        <View>
-          <Text style={[BaseStyles.mediumText, BaseStyles.mr10]}>
-            Lịch sử tìm kiếm
-          </Text>
-
-          <View style={[BaseStyles.row, BaseStyles.bodyContainer]}>
-            <MiniCard />
-            <MiniCard />
-            <MiniCard />
+      <View style={[BaseStyles.mrTop40]}>
+        <View style={[BaseStyles.row]}>
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <View style={[SearchLocaitonStyles.iconBack]}>
+              <Ionicons name="arrow-back-outline" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+          <View style={[SearchLocaitonStyles.sizeInput]}>
+            <SearchComponent navigation={navigation} />
           </View>
         </View>
-        <View style={[SearchLocaitonStyles.historySearch]}>
-          <Text style={[BaseStyles.mediumText, BaseStyles.mr10]}>
-            Kết quả tìm kiếm
-          </Text>
-          <View>
-            <FlatList
-              data={cardData}
-              renderItem={renderCard}
-              keyExtractor={(item) => item.id}
-            />
-          </View>
+
+        {/* RESULT SEARCH */}
+        <View
+          style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
+        >
+          {/* ICON SEARCH*/}
+          <View style={[SearchLocaitonStyles.iconSearch]}></View>
+          {/* TEXT SEARCH */}
+          <View style={[SearchLocaitonStyles.textSearchContainer]}></View>
+          {/* IMAGE */}
+          <View style={[SearchLocaitonStyles.imgSearch]}></View>
+          {/* ICON LINK */}
+          <View style={[SearchLocaitonStyles.linkIcon]}></View>
         </View>
       </View>
     </>

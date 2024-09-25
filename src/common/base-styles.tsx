@@ -40,7 +40,7 @@ export const BaseStyles = StyleSheet.create({
   },
 
   inputSearch: {
-    width: 200,
+    width: "100%",
     borderTopLeftRadius: 0,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,

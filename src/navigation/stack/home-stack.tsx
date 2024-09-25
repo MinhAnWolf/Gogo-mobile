@@ -22,6 +22,7 @@ const HomeStackNavigator = () => {
         <HomeStack.Screen
           name="SearchLocation"
           component={SearchLocationScreen}
+          options={{ headerShown: false }}
         />
       </HomeStack.Navigator>
     </>
