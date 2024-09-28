@@ -53,18 +53,18 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       email: data.email,
       password: data.password,
     };
-
-    login(reqData)
-      .then((res) => {
-        if (res) {
-          console.log(data);
-          navigation.navigate("HomeScreen");
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-        openModal();
-      });
+    navigation.navigate("HomeScreen");
+    // login(reqData)
+    //   .then((res) => {
+    //     if (res) {
+    //       console.log(data);
+    //       navigation.navigate("HomeScreen");
+    //     }
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //     openModal();
+    //   });
   };
 
   const onError: SubmitErrorHandler<RequestAuthentication> = (errors, e) => {

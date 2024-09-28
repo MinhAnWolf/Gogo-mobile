@@ -4,7 +4,7 @@ export const SearchLocaitonStyles = StyleSheet.create({
   resultSearchContainer: {
     width: "90%",
     height: 40,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     marginLeft: "5%",
     marginTop: 10,
   },
@@ -25,29 +25,27 @@ export const SearchLocaitonStyles = StyleSheet.create({
   },
 
   iconSearch: {
-    width: "15%",
+    width: "10%",
     height: 40,
-    backgroundColor: "green",
-    marginRight: 20,
+    // backgroundColor: "green",
   },
 
   textSearchContainer: {
-    width: "35%",
+    width: "50%",
     height: 40,
-    backgroundColor: "blue",
-    marginRight: 20,
+    // backgroundColor: "blue",
+    marginRight: 21,
   },
 
   imgSearch: {
-    width: "20%",
+    width: "24%",
     height: 40,
-    backgroundColor: "black",
-    marginLeft: 2,
+    // backgroundColor: "black",
   },
 
   linkIcon: {
-    width: "18%",
+    width: "10%",
     height: 40,
-    backgroundColor: "aqua",
+    // backgroundColor: "aqua",
   },
 });

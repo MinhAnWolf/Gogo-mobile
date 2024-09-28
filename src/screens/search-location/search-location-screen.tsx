@@ -4,6 +4,7 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { BaseStyles } from "../../common/base-styles";
 import {
@@ -38,6 +39,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   return (
     <>
       <View style={[BaseStyles.mrTop40]}>
+        {/* INPUT SEARCH */}
         <View style={[BaseStyles.row]}>
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
             <View style={[SearchLocaitonStyles.iconBack]}>
@@ -50,18 +52,121 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
         </View>
 
         {/* RESULT SEARCH */}
-        <View
-          style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
-        >
-          {/* ICON SEARCH*/}
-          <View style={[SearchLocaitonStyles.iconSearch]}></View>
-          {/* TEXT SEARCH */}
-          <View style={[SearchLocaitonStyles.textSearchContainer]}></View>
-          {/* IMAGE */}
-          <View style={[SearchLocaitonStyles.imgSearch]}></View>
-          {/* ICON LINK */}
-          <View style={[SearchLocaitonStyles.linkIcon]}></View>
-        </View>
+        <TouchableOpacity>
+          <View
+            style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
+          >
+            {/* ICON SEARCH*/}
+            <View
+              style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+            {/* TEXT SEARCH */}
+            <View
+              style={[
+                SearchLocaitonStyles.textSearchContainer,
+                BaseStyles.noRowCenter,
+              ]}
+            >
+              <Text>This is content sear</Text>
+            </View>
+            {/* IMAGE */}
+            <View style={[SearchLocaitonStyles.imgSearch]}>
+              <Image
+                source={{
+                  uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",
+                }}
+                style={[BaseStyles.image, BaseStyles.containerRelative]}
+                resizeMode="cover" // Adjust based on how you want to fit the image
+              />
+            </View>
+            {/* ICON LINK */}
+            <View
+              style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        {/* RESULT SEARCH */}
+        <TouchableOpacity>
+          <View
+            style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
+          >
+            {/* ICON SEARCH*/}
+            <View
+              style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+            {/* TEXT SEARCH */}
+            <View
+              style={[
+                SearchLocaitonStyles.textSearchContainer,
+                BaseStyles.noRowCenter,
+              ]}
+            >
+              <Text>This is content sear</Text>
+            </View>
+            {/* IMAGE */}
+            <View style={[SearchLocaitonStyles.imgSearch]}>
+              <Image
+                source={{
+                  uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",
+                }}
+                style={[BaseStyles.image, BaseStyles.containerRelative]}
+                resizeMode="cover" // Adjust based on how you want to fit the image
+              />
+            </View>
+            {/* ICON LINK */}
+            <View
+              style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        {/* RESULT SEARCH */}
+        <TouchableOpacity>
+          <View
+            style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
+          >
+            {/* ICON SEARCH*/}
+            <View
+              style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+            {/* TEXT SEARCH */}
+            <View
+              style={[
+                SearchLocaitonStyles.textSearchContainer,
+                BaseStyles.noRowCenter,
+              ]}
+            >
+              <Text>This is content sear</Text>
+            </View>
+            {/* IMAGE */}
+            <View style={[SearchLocaitonStyles.imgSearch]}>
+              <Image
+                source={{
+                  uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",
+                }}
+                style={[BaseStyles.image, BaseStyles.containerRelative]}
+                resizeMode="cover" // Adjust based on how you want to fit the image
+              />
+            </View>
+            {/* ICON LINK */}
+            <View
+              style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
+            >
+              <Ionicons name="search-outline" size={24} color="black" />
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
     </>
   );
