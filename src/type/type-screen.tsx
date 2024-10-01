@@ -1,4 +1,4 @@
-import type { NavigationProp } from "@react-navigation/native";
+import type { NavigationProp } from '@react-navigation/native';
 
 export type SCREEN = {
   HomeScreen: undefined;
@@ -7,6 +7,7 @@ export type SCREEN = {
   Login: undefined;
   Register: undefined;
   Home: undefined;
+  Otp: undefined;
 };
 
 export type BottomTabNavigatorParamList = {

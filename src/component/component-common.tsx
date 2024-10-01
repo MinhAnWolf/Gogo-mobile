@@ -1,33 +1,27 @@
-import { TextInput, View, Text, Image, TouchableOpacity } from "react-native";
-import { BaseStyles } from "../common/base-styles";
-import { HomeStyles } from "../screens/home/home-style";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { ScreenNavigationProp } from "../type/type-screen";
-import { ComponentStyle } from "./component-style";
-import { Controller } from "react-hook-form";
-import { CardProp, InputType } from "../type/type";
+import { TextInput, View, Text, Image, TouchableOpacity } from 'react-native';
+import { BaseStyles } from '../common/base-styles';
+import { HomeStyles } from '../screens/home/home-style';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { ScreenNavigationProp } from '../type/type-screen';
+import { ComponentStyle } from './component-style';
+import { Controller } from 'react-hook-form';
+import { CardProp, InputType } from '../type/type';
+import React from 'react';
 
-export const SearchComponent: React.FC<ScreenNavigationProp> = ({
-  navigation,
-}) => {
+export const SearchComponent: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   return (
     <>
       <View style={[BaseStyles.row]}>
         {/* CONTAINER ICON */}
         <View style={[ComponentStyle.searchIconContainer]}>
-          <Ionicons
-            style={[ComponentStyle.searchIcon]}
-            name="search-outline"
-            size={25}
-            color="black"
-          />
+          <Ionicons style={[ComponentStyle.searchIcon]} name='search-outline' size={25} color='black' />
         </View>
         {/* CONTAINER INPUT */}
         <View style={[ComponentStyle.searchContainer]}>
           <TextInput
             style={BaseStyles.inputSearch}
-            placeholder="Search location here"
-            onPress={() => navigation.navigate("SearchLocation")}
+            placeholder='Search location here'
+            onPress={() => navigation.navigate('SearchLocation')}
           />
         </View>
       </View>
@@ -43,9 +37,9 @@ export const Card = (cardProp: CardProp) => {
           <View>
             <Image
               source={{
-                uri: cardProp.image,
+                uri: cardProp.image
               }}
-              resizeMode="cover"
+              resizeMode='cover'
               style={ComponentStyle.imageCard}
             />
           </View>
@@ -68,25 +62,20 @@ export const MiniCard = () => {
     <View style={[ComponentStyle.categoryItem, BaseStyles.boderRadius10]}>
       <Image
         source={{
-          uri: "https://png.pngtree.com/background/20210711/original/pngtree-creative-may-day-travel-tour-background-picture-image_1112606.jpg",
+          uri: 'https://png.pngtree.com/background/20210711/original/pngtree-creative-may-day-travel-tour-background-picture-image_1112606.jpg'
         }}
         style={[BaseStyles.image, BaseStyles.boderRadius10]}
-        resizeMode="cover" // Adjust based on how you want to fit the image
+        resizeMode='cover' // Adjust based on how you want to fit the image
       />
       <Text style={[BaseStyles.centerText]}>Hồ Chí Minh</Text>
     </View>
   );
 };
 
-export const OptionSelect: React.FC<ScreenNavigationProp> = ({
-  navigation,
-}) => {
+export const OptionSelect: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   return (
     <>
-      <TouchableOpacity
-        style={[ComponentStyle.containerSetting]}
-        onPress={() => navigation.navigate("Login")}
-      >
+      <TouchableOpacity style={[ComponentStyle.containerSetting]} onPress={() => navigation.navigate('Login')}>
         <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mr15]}>
           <Text>Sign out1123</Text>
           {/* <View style={[ComponentStyle.line]}></View> */}
@@ -96,14 +85,7 @@ export const OptionSelect: React.FC<ScreenNavigationProp> = ({
       </TouchableOpacity>
 
       <View style={[ComponentStyle.containerSetting]}>
-        <View
-          style={[
-            BaseStyles.w90,
-            BaseStyles.ml5,
-            BaseStyles.mrTop10,
-            BaseStyles.mrBot10,
-          ]}
-        >
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop10, BaseStyles.mrBot10]}>
           <Text>Sign out</Text>
           <View style={[ComponentStyle.line]}></View>
           <Text>Sign out</Text>
@@ -111,14 +93,7 @@ export const OptionSelect: React.FC<ScreenNavigationProp> = ({
       </View>
 
       <View style={[ComponentStyle.containerSetting]}>
-        <View
-          style={[
-            BaseStyles.w90,
-            BaseStyles.ml5,
-            BaseStyles.mrTop10,
-            BaseStyles.mrBot10,
-          ]}
-        >
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop10, BaseStyles.mrBot10]}>
           <Text>Sign out</Text>
           <View style={[ComponentStyle.line]}></View>
           <Text>Sign out</Text>
@@ -130,13 +105,7 @@ export const OptionSelect: React.FC<ScreenNavigationProp> = ({
   );
 };
 
-export const Input = ({
-  inputType,
-  control,
-}: {
-  inputType: InputType;
-  control: any;
-}) => {
+export const Input = ({ inputType, control }: { inputType: InputType; control: any }) => {
   // https://echobind.com/post/react-hook-form-for-react-native
   return (
     <>
@@ -146,7 +115,7 @@ export const Input = ({
           <TextInput
             style={inputType.styles}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             value={value}
             placeholder={inputType.name}
             secureTextEntry={inputType.secureTextEntry}
