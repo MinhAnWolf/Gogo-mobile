@@ -33,9 +33,6 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     },
   ];
 
-  const renderCard = ({ item }: { item: CardProp }) => {
-    return <Card {...item} />;
-  };
   return (
     <>
       <View style={[BaseStyles.mrTop40]}>
@@ -52,7 +49,9 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
         </View>
 
         {/* RESULT SEARCH */}
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("ListSearchLocation")}
+        >
           <View
             style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
           >

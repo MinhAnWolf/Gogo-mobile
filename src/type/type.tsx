@@ -17,13 +17,13 @@ export interface ModalType {
 }
 
 export type CardProp = {
-  id: string;
-  image: string;
-  content: string;
-  rate: string;
-  comment: string;
-  title: string;
-  action: boolean;
+  id?: string;
+  image?: string;
+  content?: string;
+  rate?: any;
+  comment?: string;
+  title?: string;
+  action?: boolean;
 };
 
 export type SettingProp = {

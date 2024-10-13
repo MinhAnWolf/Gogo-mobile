@@ -27,7 +27,6 @@ export const ComponentStyle = StyleSheet.create({
   },
 
   containerCard: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
@@ -36,7 +35,6 @@ export const ComponentStyle = StyleSheet.create({
 
   card: {
     width: "90%",
-    marginTop: 20,
   },
 
   containerSetting: {
