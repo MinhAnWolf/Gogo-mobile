@@ -6,4 +6,8 @@ export const HomeStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  containerInputSearch: {
+    width: 100,
+  },
 });

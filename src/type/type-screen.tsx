@@ -10,6 +10,7 @@ export type SCREEN = {
   Otp: undefined;
   ListSearchLocation: undefined;
   DetailSearchLocation: undefined;
+  Notification: undefined;
 };
 
 export type BottomTabNavigatorParamList = {
