@@ -115,16 +115,52 @@ export const BaseStyles = StyleSheet.create({
     fontSize: 17,
   },
 
+  fz12: {
+    fontSize: 12,
+  },
+
   centerText: {
     textAlign: "center",
   },
 
-  w90: {
+  w80: {
     width: "80%",
   },
 
-  ml5: {
+  w70: {
+    width: "70%",
+  },
+
+  w65: {
+    width: "65%",
+  },
+
+  w60: {
+    width: "60%",
+  },
+
+  w90: {
+    width: "90%",
+  },
+
+  w20: {
+    width: "20%",
+  },
+
+  w30: {
+    width: "30%",
+  },
+
+  w40: {
+    width: "40%",
+  },
+
+  ml10: {
     marginLeft: "10%",
+  },
+
+  ml5: {
+    marginLeft: "5%",
   },
 
   whiteScreen: {
@@ -140,5 +176,14 @@ export const BaseStyles = StyleSheet.create({
   boderFullTop10: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+  },
+
+  bgTest: {
+    backgroundColor: "blue",
+  },
+
+  boldText: {
+    fontWeight: "bold",
+    color: "#000",
   },
 });

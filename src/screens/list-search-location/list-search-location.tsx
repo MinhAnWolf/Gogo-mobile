@@ -34,23 +34,27 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       </View>
       {/* CARD SEARCH */}
       <ScrollView>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("DetailSearchLocation")}
-        >
-          <View style={[BaseStyles.mrTop20]}>
-            <Card cardProp={cardProp}></Card>
-          </View>
-        </TouchableOpacity>
-
-        <View style={[BaseStyles.mrTop20]}>
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
           <Card cardProp={cardProp}></Card>
         </View>
 
-        <View style={[BaseStyles.mrTop20]}>
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
           <Card cardProp={cardProp}></Card>
         </View>
 
-        <View style={[BaseStyles.mrTop20]}>
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
+          <Card cardProp={cardProp}></Card>
+        </View>
+
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
+          <Card cardProp={cardProp}></Card>
+        </View>
+
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
+          <Card cardProp={cardProp}></Card>
+        </View>
+
+        <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
           <Card cardProp={cardProp}></Card>
         </View>
       </ScrollView>

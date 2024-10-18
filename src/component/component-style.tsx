@@ -22,19 +22,26 @@ export const ComponentStyle = StyleSheet.create({
 
   imageCard: {
     width: "100%",
-    height: 200,
+    height: 150,
     borderRadius: 10,
   },
 
   containerCard: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
+    width: "100%",
     borderRadius: 10,
-  },
-
-  card: {
-    width: "90%",
+    backgroundColor: "#ffffff",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    // Shadow for iOS
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    // Elevation for Android
+    elevation: 5,
   },
 
   containerSetting: {
