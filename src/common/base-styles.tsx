@@ -111,6 +111,10 @@ export const BaseStyles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  boderCircle: {
+    borderRadius: 100,
+  },
+
   mediumText: {
     fontSize: 17,
   },
@@ -121,6 +125,11 @@ export const BaseStyles = StyleSheet.create({
 
   centerText: {
     textAlign: "center",
+  },
+
+  centerBlock: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   w80: {

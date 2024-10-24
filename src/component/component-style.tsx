@@ -60,11 +60,25 @@ export const ComponentStyle = StyleSheet.create({
     width: "100%",
   },
 
-  categoryItem: {
-    width: 60,
-    height: 60,
-    marginLeft: 30,
-    marginTop: 30,
-    marginBottom: 30,
+  miniCardContainer: {
+    width: "48%",
+    height: 250,
+    backgroundColor: "rgb(247, 247, 247)",
+    borderRadius: 10,
+    marginTop: 20,
+  },
+
+  imgCardMini: {
+    width: "100%",
+    height: 150,
+  },
+
+  rateCardMini: {
+    width: "50%",
+    height: 40,
+    backgroundColor: "rgb(255, 255, 255)",
+    borderRadius: 100,
+    right: 2,
+    top: 2,
   },
 });

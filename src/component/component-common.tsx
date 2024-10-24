@@ -84,16 +84,35 @@ export const Card: React.FC<{ cardProp: CardProp }> = ({ cardProp }) => {
 
 export const MiniCard = () => {
   return (
-    <View style={[ComponentStyle.categoryItem, BaseStyles.boderRadius10]}>
-      <Image
-        source={{
-          uri: "https://png.pngtree.com/background/20210711/original/pngtree-creative-may-day-travel-tour-background-picture-image_1112606.jpg",
-        }}
-        style={[BaseStyles.image, BaseStyles.boderRadius10]}
-        resizeMode="cover" // Adjust based on how you want to fit the image
-      />
-      <Text style={[BaseStyles.centerText]}>Hồ Chí Minh</Text>
-    </View>
+    <>
+      <View style={[ComponentStyle.miniCardContainer]}>
+        {/* HEADER */}
+        <View>
+          {/* IMG */}
+          <View
+            style={[ComponentStyle.imgCardMini, BaseStyles.containerRelative]}
+          >
+            <Image
+              source={{
+                uri: "https://www.envistaforensics.com/media/mebd20dj/adobestock_568597769.jpeg?center=0.66971409574468088,0.49994438669522168&mode=crop&width=900&height=447&rnd=133426462407530000&format=webp&quality=80",
+              }}
+              style={[BaseStyles.image, BaseStyles.boderRadius10]}
+              resizeMode="cover" // Adjust based on how you want to fit the image
+            />
+          </View>
+          {/* RATE */}
+          <View style={[ComponentStyle.rateCardMini, BaseStyles.contaienerAbs]}>
+            <Text>4.8</Text>
+            {/* <StarRatingDisplay maxStars={1} rating={1} starSize={10} /> */}
+          </View>
+        </View>
+
+        {/* CONTENT */}
+        <View>
+          <Text>Chợ đà lạt</Text>
+        </View>
+      </View>
+    </>
   );
 };
 
