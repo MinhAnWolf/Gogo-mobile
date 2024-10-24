@@ -33,7 +33,10 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({ navigation }) => {
         </View>
       </View>
       {/* CARD SEARCH */}
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
           <Card cardProp={cardProp}></Card>
         </View>
