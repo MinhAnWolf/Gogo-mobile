@@ -75,11 +75,12 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
           </View>
           {/* CATEGORY */}
           <View style={[BaseStyles.row, HomeStyles.categoryContainer]}>
-            <View
+            <TouchableOpacity
               style={[
                 HomeStyles.itemCategoryContainer,
                 BaseStyles.boderRadius10,
               ]}
+              onPress={() => navigation.navigate("Trip")}
             >
               <View
                 style={[HomeStyles.maskCircle, BaseStyles.containerRelative]}
@@ -95,8 +96,7 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
               <Text style={[BaseStyles.centerText, BaseStyles.mrTop10]}>
                 Trip
               </Text>
-            </View>
-
+            </TouchableOpacity>
             <View
               style={[
                 HomeStyles.itemCategoryContainer,

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { BottomTabNavigatorParamList } from "../../type/type-screen";
 import HomeStackNavigator from "../stack/home-stack";
 import SettingStackNavigator from "../stack/setting-stack";
-import CreateTripStackNavigator from "../stack/create-trip-stack";
+// import CreateTripStackNavigator from "../stack/create-trip-stack";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -19,11 +19,11 @@ const BottomTabs = () => {
         component={HomeStackNavigator}
         options={{ headerShown: false }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="NewTrip"
         component={CreateTripStackNavigator}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Tab.Screen
         name="Settings"
         component={SettingStackNavigator}
