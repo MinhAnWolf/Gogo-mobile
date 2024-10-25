@@ -1,5 +1,13 @@
-const BASE_URL: string = "http://192.168.1.6:8080/api";
+const BASE_URL: string = "http://192.168.0.141:8080/api";
 
 export const API = {
   AUTHENTICATION: BASE_URL + "/auth/login",
+
+  // City.
+  CITY_SEARCH: BASE_URL + "/city/search",
+  LOCATION_SEARCH: BASE_URL + "/location/search",
+  LOCATION_CAT_SEARCH: BASE_URL + "/location-cat/search",
+
+  // Trip
+  TRIP_CREATE: BASE_URL + "/trip/create",
 };

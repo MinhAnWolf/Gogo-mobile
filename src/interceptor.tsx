@@ -33,7 +33,6 @@ axiosInstance.interceptors.response.use(
   (error) => {
     console.log("catch interceptors");
     console.log(error);
-    <NotiModal />;
     return Promise.reject(error);
   }
 );

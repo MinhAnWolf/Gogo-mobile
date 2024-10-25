@@ -5,8 +5,8 @@ import HomeScreen from "../../screens/home/home-screen";
 import SearchLocationScreen from "../../screens/search-location/search-location-screen";
 import { SCREEN } from "../../type/type-screen";
 import ListSearchLocation from "../../screens/list-search-location/list-search-location";
-import DetailSearchLocation from "../../screens/detail-search-location/detail-search-location";
 import NotificationScreen from "../../screens/notification/notification-screen";
+import DetailSearchLocationScreen from "../../screens/detail-search-location/detail-search-location-screen";
 
 const HomeStackNavigator = () => {
   const HomeStack = createNativeStackNavigator<SCREEN>();
@@ -35,7 +35,7 @@ const HomeStackNavigator = () => {
 
         <HomeStack.Screen
           name="DetailSearchLocation"
-          component={DetailSearchLocation}
+          component={DetailSearchLocationScreen}
         />
 
         <HomeStack.Screen name="Notification" component={NotificationScreen} />

@@ -1,9 +1,38 @@
 import { StyleSheet } from "react-native";
 
 export const BaseStyles = StyleSheet.create({
+  // Column custom.
+  flexCollumn: {
+    flex: 1,
+    flexDirection: "column",
+  },
+
+  // Row custom.
   row: {
     flexDirection: "row",
     flexWrap: "wrap",
+  },
+  rowFlexStart: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  rowFlexEnd: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  spaceBetween: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  // Justify content.
+  jusContentCenter: {
+    justifyContent: "center",
+  },
+
+  // Align Item.
+  alignCenter: {
+    alignItems: "center",
   },
 
   rowCenter: {
@@ -20,16 +49,26 @@ export const BaseStyles = StyleSheet.create({
     alignItems: "center",
   },
 
+  // Conainer custom styles.
+  container: {
+    width: "100%",
+    height: "auto",
+  },
+  containerP20: {
+    width: "100%",
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
   headerContainer: {
     width: "100%",
     height: 100,
   },
-
   bodyContainer: {
     width: "100%",
     height: 100,
   },
 
+  // Text input custom.
   input: {
     width: "100%",
     borderRadius: 10,
@@ -49,7 +88,30 @@ export const BaseStyles = StyleSheet.create({
     backgroundColor: "rgb(236, 237, 241)",
     height: 38,
   },
+  inputArea: {
+    borderWidth: 1,
+    borderColor: "#9999",
+    padding: 10,
+    minHeight: 100,
+    borderRadius: 5,
+  },
+  inputLine: {
+    width: "100%",
+    paddingTop: 6,
+    paddingBottom: 6,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+  },
+  inputBox: {
+    width: "100%",
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "gray",
+    padding: 10,
+    marginBottom: 10,
+  },
 
+  // Margin custom.
   mrTop20: {
     marginTop: 20,
   },
@@ -65,11 +127,15 @@ export const BaseStyles = StyleSheet.create({
   mrTop15: {
     marginTop: 15,
   },
-
+  mrTop5: {
+    marginTop: 5,
+  },
   mrTop10: {
     marginTop: 10,
   },
-
+  mrBot5: {
+    marginBottom: 5,
+  },
   mrBot10: {
     marginBottom: 10,
   },
@@ -92,6 +158,35 @@ export const BaseStyles = StyleSheet.create({
 
   mr5: {
     margin: 5,
+  },
+  mrRight5: {
+    marginRight: 5,
+  },
+  mrLeft5: {
+    marginLeft: 5,
+  },
+
+  // Padding
+  p10: {
+    padding: 10,
+  },
+  p20: {
+    padding: 20,
+  },
+  pt5: {
+    paddingTop: 5,
+  },
+  pt10: {
+    paddingTop: 10,
+  },
+  pt20: {
+    paddingTop: 20,
+  },
+  pl20: {
+    paddingLeft: 20,
+  },
+  pb20: {
+    paddingBottom: 20,
   },
 
   image: {
@@ -177,11 +272,6 @@ export const BaseStyles = StyleSheet.create({
     backgroundColor: "white",
   },
 
-  container: {
-    width: "100%",
-    height: "auto",
-  },
-
   boderFullTop10: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -194,5 +284,46 @@ export const BaseStyles = StyleSheet.create({
   boldText: {
     fontWeight: "bold",
     color: "#000",
+  },
+  fontWB: {
+    fontWeight: "bold",
+  },
+
+  // Buttons custom.
+  btn1: {
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 100,
+    // borderWidth: 2,
+    // borderColor: "orange",
+  },
+  btn2: {
+    padding: 10,
+    paddingLeft: 16,
+    paddingRight: 16,
+    borderRadius: 10,
+  },
+
+  // Colors custom.
+  bgMain: {
+    backgroundColor: "orange",
+  },
+  colorMain: {
+    color: "orange",
+  },
+  bgWhite: {
+    backgroundColor: "white",
+  },
+  bgGray: {
+    backgroundColor: "#9999",
+  },
+  colorGray: {
+    color: "#9999",
+  },
+
+  //Titles custom.
+  t4: {
+    fontSize: 16,
   },
 });

@@ -1,12 +1,11 @@
 import { TextInput, View, Text, Image, TouchableOpacity } from "react-native";
 import { BaseStyles } from "../common/base-styles";
-import { HomeStyles } from "../screens/home/home-style";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
 import { Controller } from "react-hook-form";
 import { CardProp, InputType } from "../type/type";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 
@@ -175,7 +174,6 @@ export const Input = ({
   inputType: InputType;
   control: any;
 }) => {
-  // https://echobind.com/post/react-hook-form-for-react-native
   return (
     <>
       <Controller
@@ -195,4 +193,351 @@ export const Input = ({
       />
     </>
   );
+};
+
+export const CheckBox = ({
+  isChecked,
+  onPress,
+  title,
+  color,
+}: {
+  isChecked: any;
+  onPress: any;
+  title?: string;
+  color: string;
+}) => {
+  return (
+    <>
+      <TouchableOpacity
+        style={ComponentStyle.containerCheckBox}
+        onPress={onPress}
+      >
+        <View style={[ComponentStyle.checkbox, { borderColor: `${color}` }]}>
+          {isChecked && (
+            <View
+              style={[ComponentStyle.checked, { backgroundColor: `${color}` }]}
+            />
+          )}
+        </View>
+        <Text style={ComponentStyle.label}>{title}</Text>
+      </TouchableOpacity>
+    </>
+  );
+};
+
+export const ItemIcon = ({
+  iconName,
+  size,
+  content,
+}: {
+  iconName: any;
+  size: number;
+  content: string;
+}) => {
+  return (
+    <View style={ComponentStyle.item}>
+      <Ionicons name={iconName} color="black" size={size} />
+      <Text style={ComponentStyle.itemContent}>{content}</Text>
+    </View>
+  );
+};
+
+export const ItemTab = ({
+  condition,
+  onPress,
+  name,
+}: {
+  condition: any;
+  onPress: any;
+  name: string;
+}) => {
+  return (
+    <TouchableOpacity
+      style={[ComponentStyle.tab, condition ? ComponentStyle.activeTab : null]}
+      onPress={onPress}
+    >
+      <Text style={condition ? ComponentStyle.activeTab : null}>{name}</Text>
+    </TouchableOpacity>
+  );
+};
+
+export const Comment = ({
+  userName,
+  rating,
+  timeComment,
+  content,
+}: {
+  userName: string;
+  rating: number;
+  timeComment: string;
+  content: string;
+}) => {
+  return (
+    <View style={{ height: 100, marginTop: 14, marginBottom: 14 }}>
+      <Text style={{ fontSize: 16 }}>{userName}</Text>
+      <View style={{ flexDirection: "row", justifyContent: "flex-start" }}>
+        <StarRatingDisplay
+          rating={rating}
+          starSize={16}
+          style={{ marginTop: 4 }}
+          starStyle={{ marginHorizontal: 0.8 }}
+        />
+        <Text style={{ paddingTop: 4, paddingLeft: 5, fontSize: 12 }}>
+          {timeComment}
+        </Text>
+      </View>
+      <Text style={{ marginTop: 6 }}>{content}</Text>
+    </View>
+  );
+};
+
+export const Banner = ({
+  image,
+  height = 300,
+  onBack,
+  style,
+}: {
+  image?: string;
+  height?: number;
+  onBack?: any;
+  style?: any;
+}) => {
+  return (
+    <View
+      style={[
+        style,
+        {
+          width: "100%",
+          height: height,
+        },
+      ]}
+    >
+      {image && (
+        <Image
+          source={{ uri: image }}
+          style={[BaseStyles.image, BaseStyles.containerRelative]}
+          resizeMode="cover"
+        />
+      )}
+
+      {onBack ? (
+        <TouchableOpacity
+          style={[
+            BaseStyles.contaienerAbs,
+            BaseStyles.spaceBetween,
+            BaseStyles.p10,
+            BaseStyles.mrTop15,
+          ]}
+          onPress={onBack}
+        >
+          <Ionicons name="arrow-back-outline" color="white" size={30} />
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  );
+};
+
+export const TextIcon = ({
+  text,
+  icon,
+  isStart = true,
+  color = "black",
+  size = 14,
+  style,
+}: {
+  text: string;
+  icon?: any;
+  isStart?: boolean;
+  color?: string;
+  size?: number;
+  style?: any;
+}) => {
+  return (
+    <View style={[BaseStyles.rowFlexStart, style]}>
+      {isStart && (
+        <Ionicons
+          name={icon}
+          color={color}
+          size={size}
+          style={{ marginTop: 2, marginRight: 4 }}
+        />
+      )}
+
+      <Text
+        style={{
+          color: color,
+          marginRight: 2,
+          fontSize: size,
+        }}
+      >
+        {text}
+      </Text>
+
+      {!isStart && (
+        <Ionicons
+          name={icon}
+          color={color}
+          size={size}
+          style={{ marginTop: 2 }}
+        />
+      )}
+    </View>
+  );
+};
+
+export const Sort = ({
+  data,
+  item,
+  onChange,
+}: {
+  data: { name: string; field: string }[];
+  item?: JSX.Element;
+  onChange: (field: string, type: string) => void;
+}) => {
+  const [sortFieldStates, setSortFieldStates] = useState("");
+  const [sortTypeStates, setSortTypeStates] = useState("");
+
+  const onSort = (item: any) => {
+    if (sortFieldStates !== item.field) {
+      setSortFieldStates(item.field);
+      setSortTypeStates("DESC");
+    } else {
+      if (sortTypeStates === "DESC") {
+        setSortTypeStates("ASC");
+      } else {
+        setSortFieldStates("");
+        setSortTypeStates("");
+      }
+    }
+  };
+
+  useEffect(() => {
+    onChange(sortFieldStates, sortTypeStates);
+  }, [sortFieldStates, sortTypeStates]);
+
+  return (
+    <View style={BaseStyles.rowFlexStart}>
+      {item}
+      {data.map((item: any, index: number) => {
+        return (
+          <TouchableOpacity
+            key={index}
+            style={[
+              BaseStyles.btn1,
+              BaseStyles.mrRight5,
+              sortFieldStates === item.field
+                ? BaseStyles.bgMain
+                : BaseStyles.bgGray,
+            ]}
+            onPress={() => onSort(item)}
+          >
+            <TextIcon
+              text={item.name}
+              isStart={false}
+              icon={
+                sortFieldStates === item.field && sortTypeStates === "DESC"
+                  ? "caret-down"
+                  : sortFieldStates === item.field && sortTypeStates === "ASC"
+                  ? "caret-up"
+                  : ""
+              }
+              size={12}
+            />
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+};
+
+export const ItemRating = ({
+  title,
+  rating,
+  onChange,
+  style,
+}: {
+  title: string;
+  rating: number;
+  onChange: any;
+  style?: any;
+}) => {
+  return (
+    <View style={[BaseStyles.spaceBetween, style, { alignItems: "center" }]}>
+      <Text style={[ComponentStyle.ratingTitle, BaseStyles.fontWB]}>
+        {title}
+      </Text>
+
+      <StarRating
+        rating={rating}
+        onChange={onChange}
+        starSize={20}
+        starStyle={{ marginHorizontal: 0.8 }}
+        enableHalfStar={false}
+      />
+    </View>
+  );
+};
+
+export const ButtonSelect = ({
+  title,
+  data,
+  onChange,
+  style,
+}: {
+  title: string;
+  data: string[];
+  onChange: (item: any) => void;
+  style?: any;
+}) => {
+  const [indexSelect, setIndexSelect] = useState(-1);
+
+  const onSelect = (item: any, index: number) => {
+    onChange(item);
+    setIndexSelect(index);
+  };
+
+  return (
+    <View style={style}>
+      <Text style={{ marginBottom: 6 }}>{title}</Text>
+      <View style={[BaseStyles.rowFlexStart, { flexWrap: "wrap" }]}>
+        {data.map((item: any, index: number) => {
+          return (
+            <TouchableOpacity
+              key={index}
+              onPress={() => onSelect(item, index)}
+              style={[
+                BaseStyles.btn2,
+                BaseStyles.mrRight5,
+                BaseStyles.mrBot5,
+                indexSelect == index ? BaseStyles.bgMain : BaseStyles.bgGray,
+              ]}
+            >
+              <TextIcon
+                text={item.name}
+                icon={indexSelect == index ? "checkmark" : ""}
+              />
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </View>
+  );
+};
+
+export const DateTimeText = ({
+  date,
+  style,
+}: {
+  date: string;
+  style?: any;
+}) => {
+  const formattedDateTime = new Date(date).toLocaleString("vi-VN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return <Text style={style}>{formattedDateTime}</Text>;
 };

@@ -81,4 +81,59 @@ export const ComponentStyle = StyleSheet.create({
     right: 2,
     top: 2,
   },
+
+  // Checkbox
+  containerCheckBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 36,
+    height: 36,
+  },
+  checkbox: {
+    width: 16,
+    height: 16,
+    borderWidth: 2,
+    borderColor: "#000",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checked: {
+    width: 10,
+    height: 10,
+    backgroundColor: "#000",
+  },
+  label: {
+    fontSize: 16,
+  },
+
+  // Item Icon
+  item: {
+    flexDirection: "row",
+    width: "90%",
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  itemContent: {
+    fontSize: 14,
+    color: "gray",
+    marginTop: 2,
+    marginLeft: 8,
+  },
+
+  // Item tab
+  tab: {
+    padding: 10,
+  },
+  activeTab: {
+    borderBottomWidth: 2,
+    borderBottomColor: "orange",
+    color: "orange",
+  },
+
+  // Item rating.
+  ratingTitle: {
+    paddingTop: 12,
+    fontSize: 14,
+  },
 });

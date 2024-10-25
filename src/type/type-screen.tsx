@@ -9,13 +9,20 @@ export type SCREEN = {
   Home: undefined;
   Otp: undefined;
   ListSearchLocation: undefined;
-  DetailSearchLocation: undefined;
   Notification: undefined;
+  DetailSearchLocation: { item: any };
+  Trip: undefined;
+  CreateTripDetailSuccess: {
+    data: any[];
+    location: any;
+    onGoBack?: (returnData: any) => void;
+  };
 };
 
 export type BottomTabNavigatorParamList = {
   Home: undefined;
   Settings: undefined;
+  NewTrip: undefined;
 };
 
 export type ScreenNavigationProp = {
