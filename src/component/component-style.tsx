@@ -62,7 +62,7 @@ export const ComponentStyle = StyleSheet.create({
 
   miniCardContainer: {
     width: "48%",
-    height: 250,
+    height: 270,
     backgroundColor: "rgb(247, 247, 247)",
     borderRadius: 10,
     marginTop: 20,
@@ -74,8 +74,8 @@ export const ComponentStyle = StyleSheet.create({
   },
 
   rateCardMini: {
-    width: "50%",
-    height: 40,
+    width: "35%",
+    height: 20,
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: 100,
     right: 2,

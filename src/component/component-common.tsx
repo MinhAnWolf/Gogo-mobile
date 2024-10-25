@@ -8,6 +8,7 @@ import { CardProp, InputType } from "../type/type";
 import React, { useEffect, useRef, useState } from "react";
 import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export const SearchComponent: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -101,14 +102,37 @@ export const MiniCard = () => {
           </View>
           {/* RATE */}
           <View style={[ComponentStyle.rateCardMini, BaseStyles.contaienerAbs]}>
-            <Text>4.8</Text>
-            {/* <StarRatingDisplay maxStars={1} rating={1} starSize={10} /> */}
+            <View style={[BaseStyles.noRowCenter]}>
+              <StarRatingDisplay maxStars={1} rating={1} starSize={20} />
+              <Text>4.8</Text>
+            </View>
           </View>
         </View>
 
         {/* CONTENT */}
         <View>
-          <Text>Chợ đà lạt</Text>
+          <Text
+            style={[
+              BaseStyles.centerText,
+              BaseStyles.boldText,
+              BaseStyles.fz15,
+              BaseStyles.mrBot10,
+              BaseStyles.mrTop10,
+            ]}
+          >
+            Chợ Đêm Đà Lạt
+          </Text>
+          <View style={[BaseStyles.row, BaseStyles.mrBot5]}>
+            <AntDesign name="clockcircleo" size={20} color="black" />
+            <Text style={[BaseStyles.ml5]}>8h - 10h30</Text>
+          </View>
+          <View style={[BaseStyles.row, BaseStyles.mrBot5]}>
+            <Text>2 Phạm Văn Đồng - Đà lạt</Text>
+          </View>
+          <View style={[BaseStyles.row, BaseStyles.mrBot5]}>
+            <Text>12km</Text>
+            <Text style={[BaseStyles.ml10]}>15-20 phút</Text>
+          </View>
         </View>
       </View>
     </>

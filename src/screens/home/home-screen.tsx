@@ -33,7 +33,10 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
               <Text>105 Lê Hồng Phong - Quận 5</Text>
             </View>
           </View>
-          <View style={[HomeStyles.iconContainer, BaseStyles.boderRadius10]}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Notification")}
+            style={[HomeStyles.iconContainer, BaseStyles.boderRadius10]}
+          >
             <Ionicons
               style={[BaseStyles.containerRelative]}
               name="notifications-outline"
@@ -49,7 +52,7 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
             >
               <Text>1</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
