@@ -67,7 +67,6 @@ export const BaseStyles = StyleSheet.create({
     width: "100%",
     height: 100,
   },
-
   // Text input custom.
   input: {
     width: "100%",
@@ -133,11 +132,13 @@ export const BaseStyles = StyleSheet.create({
   mrTop10: {
     marginTop: 10,
   },
-  mrBot5: {
-    marginBottom: 5,
-  },
+
   mrBot10: {
     marginBottom: 10,
+  },
+
+  mrBot5: {
+    marginBottom: 5,
   },
 
   mrBot15: {
@@ -212,6 +213,18 @@ export const BaseStyles = StyleSheet.create({
 
   mediumText: {
     fontSize: 17,
+  },
+
+  fz13: {
+    fontSize: 13,
+  },
+
+  fz14: {
+    fontSize: 14,
+  },
+
+  fz15: {
+    fontSize: 15,
   },
 
   fz12: {
