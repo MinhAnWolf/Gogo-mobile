@@ -17,6 +17,7 @@ const SettingStackNavigator = () => {
       <SettingStack.Screen
         name="ProfileSettings"
         component={ProfileSettingScreen}
+        options={{ headerShown: false }}
       />
     </SettingStack.Navigator>
   );

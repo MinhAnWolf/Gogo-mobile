@@ -15,11 +15,11 @@ export const SearchComponent: React.FC<ScreenNavigationProp> = ({
 }) => {
   return (
     <>
-      <View style={[BaseStyles.row]}>
+      <View style={[BaseStyles.rowFlexStart]}>
         {/* CONTAINER ICON */}
         <View style={[ComponentStyle.searchIconContainer]}>
           <Ionicons
-            style={[ComponentStyle.searchIcon]}
+            style={[BaseStyles.centerText, ComponentStyle.searchIcon]}
             name="search-outline"
             size={25}
             color="black"

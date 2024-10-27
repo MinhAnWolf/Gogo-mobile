@@ -6,7 +6,6 @@ export const ComponentStyle = StyleSheet.create({
     height: 38,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    textAlign: "center",
     backgroundColor: "rgb(236, 237, 241)",
   },
 
@@ -16,14 +15,14 @@ export const ComponentStyle = StyleSheet.create({
   },
 
   searchIcon: {
-    marginLeft: 8,
-    marginTop: 5,
+    marginTop: "15%",
   },
 
   imageCard: {
     width: "100%",
     height: 150,
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   },
 
   containerCard: {

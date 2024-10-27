@@ -83,7 +83,7 @@ export const BaseStyles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     borderBottomLeftRadius: 0,
-    padding: 2,
+    paddingHorizontal: 15,
     backgroundColor: "rgb(236, 237, 241)",
     height: 38,
   },

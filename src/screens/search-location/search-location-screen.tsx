@@ -16,6 +16,8 @@ import { SearchLocaitonStyles } from "./search-location-styles";
 import { ScreenNavigationProp } from "../../type/type-screen";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { CardProp } from "../../type/type";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
 
 const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -37,13 +39,19 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     <>
       <View style={[BaseStyles.mrTop40]}>
         {/* INPUT SEARCH */}
-        <View style={[BaseStyles.row]}>
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <View style={[SearchLocaitonStyles.iconBack]}>
-              <Ionicons name="arrow-back-outline" size={24} color="black" />
-            </View>
+        <View style={[BaseStyles.row, { width: "100%" }, BaseStyles.mrBot5]}>
+          <TouchableOpacity
+            style={[
+              BaseStyles.ml5,
+              BaseStyles.mrRight5,
+              BaseStyles.noRowCenter,
+              { width: "10%" },
+            ]}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Ionicons name="arrow-back-outline" size={24} color="black" />
           </TouchableOpacity>
-          <View style={[SearchLocaitonStyles.sizeInput]}>
+          <View style={[{ width: "78%" }]}>
             <SearchComponent navigation={navigation} />
           </View>
         </View>
@@ -59,7 +67,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
             <View
               style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
             >
-              <Ionicons name="search-outline" size={24} color="black" />
+              <AntDesign name="clockcircleo" size={24} color="black" />
             </View>
             {/* TEXT SEARCH */}
             <View
@@ -84,7 +92,46 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
             <View
               style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
             >
-              <Ionicons name="search-outline" size={24} color="black" />
+              <Feather name="external-link" size={24} color="black" />
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        {/* RESULT SEARCH */}
+        <TouchableOpacity>
+          <View
+            style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
+          >
+            {/* ICON SEARCH*/}
+            <View
+              style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
+            >
+              <AntDesign name="clockcircleo" size={24} color="black" />
+            </View>
+            {/* TEXT SEARCH */}
+            <View
+              style={[
+                SearchLocaitonStyles.textSearchContainer,
+                BaseStyles.noRowCenter,
+              ]}
+            >
+              <Text>This is content sear</Text>
+            </View>
+            {/* IMAGE */}
+            <View style={[SearchLocaitonStyles.imgSearch]}>
+              <Image
+                source={{
+                  uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",
+                }}
+                style={[BaseStyles.image, BaseStyles.containerRelative]}
+                resizeMode="cover" // Adjust based on how you want to fit the image
+              />
+            </View>
+            {/* ICON LINK */}
+            <View
+              style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
+            >
+              <Feather name="external-link" size={24} color="black" />
             </View>
           </View>
         </TouchableOpacity>
@@ -123,46 +170,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
             <View
               style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
             >
-              <Ionicons name="search-outline" size={24} color="black" />
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        {/* RESULT SEARCH */}
-        <TouchableOpacity>
-          <View
-            style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
-          >
-            {/* ICON SEARCH*/}
-            <View
-              style={[SearchLocaitonStyles.iconSearch, BaseStyles.noRowCenter]}
-            >
-              <Ionicons name="search-outline" size={24} color="black" />
-            </View>
-            {/* TEXT SEARCH */}
-            <View
-              style={[
-                SearchLocaitonStyles.textSearchContainer,
-                BaseStyles.noRowCenter,
-              ]}
-            >
-              <Text>This is content sear</Text>
-            </View>
-            {/* IMAGE */}
-            <View style={[SearchLocaitonStyles.imgSearch]}>
-              <Image
-                source={{
-                  uri: "https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg",
-                }}
-                style={[BaseStyles.image, BaseStyles.containerRelative]}
-                resizeMode="cover" // Adjust based on how you want to fit the image
-              />
-            </View>
-            {/* ICON LINK */}
-            <View
-              style={[SearchLocaitonStyles.linkIcon, BaseStyles.noRowCenter]}
-            >
-              <Ionicons name="search-outline" size={24} color="black" />
+              <Feather name="external-link" size={24} color="black" />
             </View>
           </View>
         </TouchableOpacity>

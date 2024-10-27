@@ -19,17 +19,27 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   return (
     <>
       {/* INPUT SEARCH */}
-      <View style={[BaseStyles.mrTop40]}>
-        {/* INPUT SEARCH */}
-        <View style={[BaseStyles.row]}>
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <View style={[SearchLocaitonStyles.iconBack]}>
-              <Ionicons name="arrow-back-outline" size={24} color="black" />
-            </View>
-          </TouchableOpacity>
-          <View style={[SearchLocaitonStyles.sizeInput]}>
-            <SearchComponent navigation={navigation} />
-          </View>
+      <View
+        style={[
+          BaseStyles.row,
+          { width: "100%" },
+          BaseStyles.mrTop40,
+          BaseStyles.mrBot5,
+        ]}
+      >
+        <TouchableOpacity
+          style={[
+            BaseStyles.ml5,
+            BaseStyles.mrRight5,
+            BaseStyles.noRowCenter,
+            { width: "10%" },
+          ]}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Ionicons name="arrow-back-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <View style={[{ width: "78%" }]}>
+          <SearchComponent navigation={navigation} />
         </View>
       </View>
       {/* CARD SEARCH */}
