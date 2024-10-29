@@ -1,7 +1,14 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
-import { getSecureStore, getStoreData } from "./common/utils/storage-utils";
+import {
+  getSecureStore,
+  getStoreData,
+  setSecureStore,
+  setStoreData,
+} from "./common/utils/storage-utils";
 import { isNull } from "./common/utils/helper-utils";
 import { NotiModal } from "./component/modal/notification-modal";
+import { API } from "./common/api/api-common";
+import { setItemAsync } from "expo-secure-store";
 
 var axiosInstance = axios.create();
 
@@ -16,6 +23,10 @@ axiosInstance.interceptors.request.use(
     ) {
       return Promise.reject("Can't request");
     }
+    const clientId = await getStoreData("client-id");
+    const authorization = await getStoreData("authorization");
+    config.headers.Authorization = authorization;
+    config.headers.id = clientId;
     return config;
   },
   (error) => {
@@ -25,8 +36,12 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    if (response.status === 200) {
+  async (response) => {
+    if (response.status === 200 && response.data.errCode === 0) {
+      if (response.config.url?.includes(API.AUTHENTICATION)) {
+        await setStoreData("client-id", response.data.uid);
+        await setStoreData("authorization", response.data.token);
+      }
       return response;
     } else return Promise.reject(response.data);
   },

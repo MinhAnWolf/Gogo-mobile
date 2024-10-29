@@ -93,10 +93,29 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
                   resizeMode="cover" // Adjust based on how you want to fit the image
                 />
               </View>
-              <Text style={[BaseStyles.centerText, BaseStyles.mrTop10]}>
-                Trip
-              </Text>
+              <Text style={[BaseStyles.centerText]}>Trip</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                HomeStyles.itemCategoryContainer,
+                BaseStyles.boderRadius10,
+              ]}
+              onPress={() => navigation.navigate("Login")}
+            >
+              <View
+                style={[HomeStyles.maskCircle, BaseStyles.containerRelative]}
+              >
+                <Image
+                  source={{
+                    uri: "https://img.freepik.com/free-vector/discount-price-tag-icon_632498-3597.jpg",
+                  }}
+                  style={[BaseStyles.image, BaseStyles.boderCircle]}
+                  resizeMode="cover" // Adjust based on how you want to fit the image
+                />
+              </View>
+              <Text style={[BaseStyles.centerText]}>Trip</Text>
+            </TouchableOpacity>
+
             <View
               style={[
                 HomeStyles.itemCategoryContainer,
@@ -114,9 +133,7 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
                   resizeMode="cover" // Adjust based on how you want to fit the image
                 />
               </View>
-              <Text style={[BaseStyles.centerText, BaseStyles.mrTop10]}>
-                Trip
-              </Text>
+              <Text style={[BaseStyles.centerText]}>Trip</Text>
             </View>
 
             <View
@@ -136,31 +153,7 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
                   resizeMode="cover" // Adjust based on how you want to fit the image
                 />
               </View>
-              <Text style={[BaseStyles.centerText, BaseStyles.mrTop10]}>
-                Trip
-              </Text>
-            </View>
-
-            <View
-              style={[
-                HomeStyles.itemCategoryContainer,
-                BaseStyles.boderRadius10,
-              ]}
-            >
-              <View
-                style={[HomeStyles.maskCircle, BaseStyles.containerRelative]}
-              >
-                <Image
-                  source={{
-                    uri: "https://img.freepik.com/free-vector/discount-price-tag-icon_632498-3597.jpg",
-                  }}
-                  style={[BaseStyles.image, BaseStyles.boderCircle]}
-                  resizeMode="cover" // Adjust based on how you want to fit the image
-                />
-              </View>
-              <Text style={[BaseStyles.centerText, BaseStyles.mrTop10]}>
-                Trip
-              </Text>
+              <Text style={[BaseStyles.centerText]}>Trip</Text>
             </View>
           </View>
 

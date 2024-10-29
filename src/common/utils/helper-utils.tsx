@@ -1,3 +1,3 @@
 export const isNull = async (value: any) => {
-  return value == null;
+  return value == null || value == undefined;
 };

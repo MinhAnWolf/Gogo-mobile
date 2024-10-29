@@ -57,8 +57,8 @@ export const HomeStyles = StyleSheet.create({
   },
 
   itemCategoryContainer: {
-    width: "30%",
-    height: 120,
+    width: "22%",
+    height: 100,
     backgroundColor: "rgb(247, 247, 247)",
     borderRadius: 100,
     marginTop: 20,
@@ -66,11 +66,12 @@ export const HomeStyles = StyleSheet.create({
 
   maskCircle: {
     width: "70%",
-    height: 70,
+    height: 50,
     marginLeft: "15%",
     marginTop: "10%",
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: 100,
+    marginBottom: 10,
   },
 
   hotSearchContainer: {

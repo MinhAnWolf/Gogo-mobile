@@ -9,6 +9,13 @@ import { RequestAuthentication } from "../../../type/type-api";
 import { ScreenNavigationProp } from "../../../type/type-screen";
 import { LoginStyles } from "./login-styles";
 import messaging from "@react-native-firebase/messaging";
+import { login } from "../../../service/AuthenticationService";
+import {
+  getStoreData,
+  setStoreData,
+} from "../../../common/utils/storage-utils";
+import { setItemAsync } from "expo-secure-store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   const {
@@ -43,19 +50,17 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       email: data.email,
       password: data.password,
     };
-    navigation.navigate("HomeScreen");
     requestNotification();
-    // login(reqData)
-    //   .then((res) => {
-    //     if (res) {
-    //       console.log(data);
-    //       navigation.navigate("HomeScreen");
-    //     }
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //     openModal();
-    //   });
+    login(reqData)
+      .then(async (res) => {
+        if (res.status === 200) {
+          navigation.navigate("HomeScreen");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        openModal();
+      });
   };
 
   const onError: SubmitErrorHandler<RequestAuthentication> = (errors, e) => {
