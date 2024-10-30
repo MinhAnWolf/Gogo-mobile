@@ -10,12 +10,6 @@ import { ScreenNavigationProp } from "../../../type/type-screen";
 import { LoginStyles } from "./login-styles";
 import messaging from "@react-native-firebase/messaging";
 import { login } from "../../../service/AuthenticationService";
-import {
-  getStoreData,
-  setStoreData,
-} from "../../../common/utils/storage-utils";
-import { setItemAsync } from "expo-secure-store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   const {

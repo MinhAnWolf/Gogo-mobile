@@ -1,14 +1,22 @@
-import { TextInput, View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { BaseStyles } from "../common/base-styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
 import { Controller } from "react-hook-form";
-import { CardProp, InputType } from "../type/type";
+import { CardProp, InputType, SettingOptionSelectProp } from "../type/type";
 import React, { useEffect, useRef, useState } from "react";
 import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { ProfileSettingStyles } from "../screens/profile-setting/profile-setting-styles";
 
 export const SearchComponent: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -139,54 +147,47 @@ export const MiniCard = () => {
   );
 };
 
-export const OptionSelect: React.FC<ScreenNavigationProp> = ({
-  navigation,
+export const OptionSelect: React.FC<SettingOptionSelectProp> = ({
+  navigationScreen,
+  title,
+  imgIcon,
 }) => {
   return (
     <>
-      <TouchableOpacity
-        style={[ComponentStyle.containerSetting]}
-        onPress={() => navigation.navigate("Login")}
-      >
-        <View style={[BaseStyles.w80, BaseStyles.ml10, BaseStyles.mr15]}>
-          <Text>Sign out1123</Text>
-          {/* <View style={[ComponentStyle.line]}></View> */}
-          {/* <Text>Sign out</Text>
-          <View style={[ComponentStyle.line]}></View> */}
-        </View>
-      </TouchableOpacity>
-
-      <View style={[ComponentStyle.containerSetting]}>
+      <TouchableWithoutFeedback onPress={navigationScreen}>
         <View
           style={[
-            BaseStyles.w80,
-            BaseStyles.ml10,
-            BaseStyles.mrTop10,
-            BaseStyles.mrBot10,
+            ProfileSettingStyles.optionItem,
+            BaseStyles.row,
+            BaseStyles.boderRadius10,
           ]}
         >
-          <Text>Sign out</Text>
-          <View style={[ComponentStyle.line]}></View>
-          <Text>Sign out</Text>
+          {/* ICON */}
+          <View
+            style={[ProfileSettingStyles.iconContainer, BaseStyles.centerHight]}
+          >
+            <View
+              style={[ProfileSettingStyles.maskIcon, BaseStyles.centerHight]}
+            >
+              <Image
+                source={{
+                  uri: imgIcon,
+                }}
+                style={[
+                  ProfileSettingStyles.imgIconSize,
+                  BaseStyles.containerRelative,
+                ]}
+                resizeMode="contain" // Adjust based on how you want to fit the image
+              />
+            </View>
+          </View>
+          <View style={[ProfileSettingStyles.contentContainer]}>
+            <View style={[BaseStyles.centerHight]}>
+              <Text style={[BaseStyles.boldText]}>{title}</Text>
+            </View>
+          </View>
         </View>
-      </View>
-
-      <View style={[ComponentStyle.containerSetting]}>
-        <View
-          style={[
-            BaseStyles.w80,
-            BaseStyles.ml10,
-            BaseStyles.mrTop10,
-            BaseStyles.mrBot10,
-          ]}
-        >
-          <Text>Sign out</Text>
-          <View style={[ComponentStyle.line]}></View>
-          <Text>Sign out</Text>
-          <View style={[ComponentStyle.line]}></View>
-          <Text>Sign out</Text>
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
     </>
   );
 };

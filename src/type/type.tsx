@@ -1,3 +1,5 @@
+import { ScreenNavigationProp } from "./type-screen";
+
 export interface InputType {
   name: string;
   styles: any;
@@ -26,7 +28,9 @@ export type CardProp = {
   action?: boolean;
 };
 
-export type SettingProp = {
-  id: string;
+export type SettingOptionSelectProp = {
+  id?: string;
   title: string;
+  imgIcon: string;
+  navigationScreen: () => void;
 };

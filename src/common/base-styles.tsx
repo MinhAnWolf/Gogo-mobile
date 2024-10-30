@@ -123,6 +123,18 @@ export const BaseStyles = StyleSheet.create({
     marginTop: 40,
   },
 
+  mrTop50: {
+    marginTop: 50,
+  },
+
+  mrTop60: {
+    marginTop: 60,
+  },
+
+  mrTop70: {
+    marginTop: 70,
+  },
+
   mrTop15: {
     marginTop: 15,
   },
@@ -238,6 +250,11 @@ export const BaseStyles = StyleSheet.create({
   centerBlock: {
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  centerHight: {
+    flex: 1,
+    justifyContent: "center",
   },
 
   w80: {
