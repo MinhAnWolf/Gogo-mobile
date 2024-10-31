@@ -11,12 +11,13 @@ export type SCREEN = {
   ListSearchLocation: undefined;
   Notification: undefined;
   DetailSearchLocation: { item: any };
-  Trip: undefined;
+  CreateTrip: undefined;
   CreateTripDetailSuccess: {
     data: any[];
     location: any;
     onGoBack?: (returnData: any) => void;
   };
+  CreateLocation: undefined;
 };
 
 export type BottomTabNavigatorParamList = {

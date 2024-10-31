@@ -7,7 +7,6 @@ import { SCREEN } from "../../type/type-screen";
 import ListSearchLocation from "../../screens/list-search-location/list-search-location";
 import NotificationScreen from "../../screens/notification/notification-screen";
 import DetailSearchLocationScreen from "../../screens/detail-search-location/detail-search-location-screen";
-import CreateTripScreen from "../../screens/create-trip/create-trip-screen";
 
 const HomeStackNavigator = () => {
   const HomeStack = createNativeStackNavigator<SCREEN>();
@@ -41,11 +40,6 @@ const HomeStackNavigator = () => {
 
         <HomeStack.Screen name="Notification" component={NotificationScreen} />
 
-        <HomeStack.Screen
-          name="Trip"
-          component={CreateTripScreen}
-          options={{ headerShown: false }}
-        />
       </HomeStack.Navigator>
     </>
   );

@@ -80,20 +80,18 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
                 HomeStyles.itemCategoryContainer,
                 BaseStyles.boderRadius10,
               ]}
-              onPress={() => navigation.navigate("Trip")}
+              onPress={() => navigation.navigate("CreateTrip")}
             >
               <View
                 style={[HomeStyles.maskCircle, BaseStyles.containerRelative]}
               >
                 <Image
-                  source={{
-                    uri: "https://img.freepik.com/free-vector/discount-price-tag-icon_632498-3597.jpg",
-                  }}
+                  source={require("../../../assets/icons/new-trip.png")}
                   style={[BaseStyles.image, BaseStyles.boderCircle]}
-                  resizeMode="cover" // Adjust based on how you want to fit the image
+                  resizeMode="contain"
                 />
               </View>
-              <Text style={[BaseStyles.centerText]}>Trip</Text>
+              <Text style={[BaseStyles.centerText]}>Tạo chuyến đi</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[
@@ -116,25 +114,24 @@ const HomeScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
               <Text style={[BaseStyles.centerText]}>Trip</Text>
             </TouchableOpacity>
 
-            <View
+            <TouchableOpacity
               style={[
                 HomeStyles.itemCategoryContainer,
                 BaseStyles.boderRadius10,
               ]}
+              onPress={() => navigation.navigate("CreateLocation")}
             >
               <View
                 style={[HomeStyles.maskCircle, BaseStyles.containerRelative]}
               >
                 <Image
-                  source={{
-                    uri: "https://img.freepik.com/free-vector/discount-price-tag-icon_632498-3597.jpg",
-                  }}
+                  source={require("../../../assets/icons/location.png")}
                   style={[BaseStyles.image, BaseStyles.boderCircle]}
-                  resizeMode="cover" // Adjust based on how you want to fit the image
+                  resizeMode="contain"
                 />
               </View>
-              <Text style={[BaseStyles.centerText]}>Trip</Text>
-            </View>
+              <Text style={[BaseStyles.centerText]}>Thêm vị trí</Text>
+            </TouchableOpacity>
 
             <View
               style={[

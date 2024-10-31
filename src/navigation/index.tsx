@@ -7,6 +7,8 @@ import RegisterScreen from "../screens/auth/register/register-screen";
 import BottomTabs from "./tabs/tab";
 import DetailSearchLocationScreen from "../screens/detail-search-location/detail-search-location-screen";
 import CreateTripDetailSuccessScreen from "../screens/create-trip-detail-success/create-trip-detail-success-screen";
+import CreateTripScreen from "../screens/create-trip/create-trip-screen";
+import CreateLocationScreen from "../screens/create-location/create-location-screen";
 
 const RootNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -46,6 +48,16 @@ const RootNavigator = () => {
         <Stack.Screen
           name="CreateTripDetailSuccess"
           component={CreateTripDetailSuccessScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreateTrip"
+          component={CreateTripScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreateLocation"
+          component={CreateLocationScreen}
           options={{ headerShown: false }}
         />
         {/* <Stack.Screen

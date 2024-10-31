@@ -14,13 +14,17 @@
     "ios": {
       "supportsTablet": true,
       "entitlements": {
-        "aps-environment": "production"
+        "aps-environment": "production",
+        "infoPlist": {
+          "NSCameraUsageDescription": "This app needs access to your camera to take pictures."
+        }
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "permissions": ["CAMERA"]
       }
     },
     "web": {

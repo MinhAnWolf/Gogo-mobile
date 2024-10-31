@@ -18,17 +18,16 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { create } from "../../service/TripService";
+import { ModalInputDate } from "../../component/modal/modal-input-date";
 
 const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
   navigation,
 }) => {
   const { data, location, onGoBack }: any = useRoute().params;
   const [dataList, setDataList] = useState(() => sortByDateStart(data));
-  const [locationDate, setLocationDate] = useState(new Date());
-  const [isChangeDates, setIsChangeDates] = useState<boolean[]>([]);
   const [tripName, setTripName] = useState("");
-  const [startDate, setStartDate] = useState<any>();
-  const [endDate, setEndDate] = useState<any>();
+  const [startDateTime, setStartDateTime] = useState<any>();
+  const [endDateTime, setEndDatetime] = useState<any>();
 
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -46,17 +45,44 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
   }
 
   useEffect(() => {
-    setStartDate(dataList[0].startDate);
-    setEndDate(dataList[dataList.length - 1]?.startDate);
-  }, [dataList, isChangeDates]);
+    try {
+      const dataLength = dataList.length;
+      if (dataLength) {
+        const startDate = new Date(dataList[0]?.startDate);
+        const startTime = new Date(dataList[0]?.startTime);
+        startDate.setHours(
+          startTime.getHours(),
+          startTime.getMinutes(),
+          startTime.getSeconds(),
+          startTime.getMilliseconds()
+        );
+        setStartDateTime(startDate);
 
-  const onTouchChangeDate = (index: number) => {
-    const updatedDates = [...isChangeDates];
-    updatedDates[index] = !updatedDates[index];
-    setIsChangeDates(updatedDates);
-    if (!updatedDates[index]) {
-      sortByDateStart(data);
+        const endDate = new Date(dataList[dataLength - 1]?.startDate);
+        const endTime = new Date(dataList[dataLength - 1]?.startTime);
+        endDate.setHours(
+          endTime.getHours(),
+          endTime.getMinutes(),
+          endTime.getSeconds(),
+          endTime.getMilliseconds()
+        );
+        setEndDatetime(endDate);
+      }
+    } catch (e) {
+      console.log(e);
     }
+  }, [dataList]);
+
+  const onChangeDate = (index: number, value: any) => {
+    const updateDataList = [...dataList];
+    updateDataList[index].startDate = value;
+    setDataList(sortByDateStart(updateDataList));
+  };
+
+  const onChangeTime = (index: number, value: any) => {
+    const updateDataList = [...dataList];
+    updateDataList[index].startTime = value;
+    setDataList(sortByDateStart(updateDataList));
   };
 
   const onRemoveLocation = (index: number) => {
@@ -72,15 +98,17 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
       cityName: location.name,
       name: tripName,
       countLocation: dataList.length,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: startDateTime,
+      endDate: endDateTime,
       tripLocations: dataList,
     };
     create(input)
       .then((res) => {
         if (res) {
           setIsSubmit(false);
-          navigation.navigate("Home");
+          setDataList([]);
+          onGoBack([]);
+          navigation.goBack();
         }
       })
       .catch((err) => {
@@ -90,11 +118,6 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const renderItem = ({ item, index }: { item: any; index: number }) => {
-    const onChangeDate = (event: any, selectedDate: any) => {
-      item.startDate = selectedDate;
-      setLocationDate(selectedDate);
-    };
-
     return (
       <View key={index}>
         <View style={CreateTripDelSucStyles.card}>
@@ -120,33 +143,21 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
               {item.address}
             </Text>
 
-            {isChangeDates[index] ? (
-              <View style={BaseStyles.rowFlexEnd}>
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={
-                    item.startDate ? new Date(item.startDate) : locationDate
-                  }
-                  mode="datetime"
-                  display="default"
-                  onChange={onChangeDate}
-                />
-                <TouchableOpacity
-                  style={[
-                    BaseStyles.btn2,
-                    BaseStyles.bgMain,
-                    BaseStyles.mrLeft5,
-                  ]}
-                  onPress={() => onTouchChangeDate(index)}
-                >
-                  <Text>OK</Text>
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <TouchableOpacity onPress={() => onTouchChangeDate(index)}>
-                <DateTimeText date={item.startDate} />
-              </TouchableOpacity>
-            )}
+            <View style={BaseStyles.rowFlexStart}>
+              <ModalInputDate
+                title="Chọn thời gian bất đầu"
+                type="time"
+                data={item.startTime}
+                onChange={(value) => onChangeTime(index, value)}
+              />
+              <Text style={[BaseStyles.mrRight5, BaseStyles.mrLeft5]}> - </Text>
+              <ModalInputDate
+                title="Chọn ngày bất đầu"
+                type="date"
+                data={item.startDate}
+                onChange={(value) => onChangeDate(index, value)}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -175,9 +186,9 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
 
           <View style={[BaseStyles.rowFlexStart, BaseStyles.mrBot5]}>
             <TextIcon text="Thời gian:" icon="time" />
-            <DateTimeText date={startDate} style={BaseStyles.colorMain} />
+            <DateTimeText date={startDateTime} style={BaseStyles.colorMain} />
             <Text> - </Text>
-            <DateTimeText date={endDate} style={BaseStyles.colorMain} />
+            <DateTimeText date={endDateTime} style={BaseStyles.colorMain} />
           </View>
 
           <TextIcon
@@ -194,9 +205,12 @@ const CreateTripDetailSuccessScreen: React.FC<ScreenNavigationProp> = ({
         />
 
         <TouchableOpacity
-          style={[CreateTripDelSucStyles.btnSubmit, BaseStyles.bgMain]}
+          style={[
+            CreateTripDelSucStyles.btnSubmit,
+            isSubmit || !tripName ? BaseStyles.bgGray : BaseStyles.bgMain,
+          ]}
           onPress={onSubmit}
-          disabled={isSubmit}
+          disabled={isSubmit || !tripName}
         >
           <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
             {isSubmit ? "Đang tạo..." : "Tạo chuyến đi"}

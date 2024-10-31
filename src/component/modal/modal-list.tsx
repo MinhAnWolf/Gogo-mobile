@@ -28,7 +28,7 @@ export const ModalList = ({
   buttonStyle,
   data,
   isSearch = true,
-  isBtnRemoveItem = false,
+  isDisabled = false,
   onInit,
   onChange,
 }: {
@@ -39,7 +39,7 @@ export const ModalList = ({
   buttonStyle?: any;
   data: any[];
   isSearch?: boolean;
-  isBtnRemoveItem?: boolean;
+  isDisabled?: boolean;
   onInit: () => void;
   onChange: (item: any) => void;
 }) => {
@@ -95,14 +95,20 @@ export const ModalList = ({
       <TouchableOpacity
         style={[BaseStyles.alignCenter, buttonStyle]}
         onPress={onHandlerOpen}
+        disabled={isDisabled}
       >
         <View style={BaseStyles.rowFlexStart}>
-          <TextIcon text={selectedValue} icon={icon} size={size} />
+          <TextIcon
+            text={selectedValue}
+            icon={icon}
+            size={size}
+            color={isDisabled ? "gray" : "black"}
+          />
         </View>
         <Ionicons
           name={isTouch ? "chevron-up-sharp" : "chevron-down-sharp"}
           size={size}
-          color="black"
+          color={isDisabled ? "gray" : "black"}
         />
       </TouchableOpacity>
 

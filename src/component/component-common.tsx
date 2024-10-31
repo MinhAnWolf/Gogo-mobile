@@ -317,13 +317,17 @@ export const Comment = ({
 };
 
 export const Banner = ({
+  title,
   image,
   height = 300,
+  color = "white",
   onBack,
   style,
 }: {
+  title?: string;
   image?: string;
   height?: number;
+  color?: string;
   onBack?: any;
   style?: any;
 }) => {
@@ -355,7 +359,19 @@ export const Banner = ({
           ]}
           onPress={onBack}
         >
-          <Ionicons name="arrow-back-outline" color="white" size={30} />
+          <View style={[BaseStyles.rowFlexStart, { alignItems: "center" }]}>
+            <Ionicons name="arrow-back-outline" color={color} size={30} />
+            <Text
+              style={[
+                BaseStyles.t3,
+                BaseStyles.fontWB,
+                BaseStyles.ml5,
+                { color: `${color}` },
+              ]}
+            >
+              {title}
+            </Text>
+          </View>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -510,7 +526,7 @@ export const ButtonSelect = ({
   style,
 }: {
   title: string;
-  data: string[];
+  data: any[];
   onChange: (item: any) => void;
   style?: any;
 }) => {
@@ -551,18 +567,34 @@ export const ButtonSelect = ({
 
 export const DateTimeText = ({
   date,
+  type,
   style,
 }: {
-  date: string;
+  date: any;
+  type?: string;
   style?: any;
 }) => {
-  const formattedDateTime = new Date(date).toLocaleString("vi-VN", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formatted = new Date(date).toLocaleString(
+    "vi-VN",
+    type === "date"
+      ? {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }
+      : type === "time"
+      ? {
+          hour: "2-digit",
+          minute: "2-digit",
+        }
+      : {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        }
+  );
 
-  return <Text style={style}>{formattedDateTime}</Text>;
+  return <Text style={style}>{formatted}</Text>;
 };

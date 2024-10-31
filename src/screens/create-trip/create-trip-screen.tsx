@@ -6,16 +6,17 @@ import { BaseStyles } from "../../common/base-styles";
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { CreateTripStyles } from "./create-trip-styles";
 import { ModalCustom } from "../../component/modal/modal-custom";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { citySearch, locCatSearch } from "../../service/CommonService";
 import { ModalList } from "../../component/modal/modal-list";
 import { locationSearch } from "../../service/TripService";
+import { ModalInputDate } from "../../component/modal/modal-input-date";
 
 const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
   const [cityStates, setCityStates] = useState<any>();
   const [cityDatas, setCityDatas] = useState(Array<any>());
   const [locSelectedStates, setLocSelectedStates] = useState(Array<any>());
   const [locationDate, setLocationDate] = useState(new Date());
+  const [locationTime, setLocationTime] = useState(new Date());
   const [locationDatas, setLocationDatas] = useState(Array<any>());
   const [locDataElements, setLocDataElements] = useState(0);
   const [sizeSelectedStates, setSizeSelectedStates] = useState(0);
@@ -45,6 +46,8 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
   const toggleCheckbox = (item: any, index: number) => {
     item.startDate = locationDate.toISOString();
+    item.startTime = locationTime.toISOString();
+
     const indexOf = getIndexCheckbox(item);
     indexOf > -1
       ? locSelectedStates.splice(indexOf, 1)
@@ -67,16 +70,19 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     setSortTypeStates(type);
   };
 
-  const onChangeDate = (event: any, selectedDate: any) => {
-    const currentDate = selectedDate || locationDate;
-    setLocationDate(currentDate);
+  const onChangeDate = (value: any) => {
+    setLocationDate(value);
+  };
+
+  const onChangeTime = (value: any) => {
+    setLocationTime(value);
   };
 
   const onInitModalCity = () => {
     citySearch()
       .then((res) => {
         if (res) {
-          setCityDatas(res.data);
+          setCityDatas(res?.data.data);
         }
       })
       .catch((e) => {
@@ -97,8 +103,9 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     locationSearch(inputParam)
       .then((res) => {
         if (res) {
-          setLocationDatas(res.data.content);
-          setLocDataElements(res.data.totalElements);
+          const data = res?.data.data;
+          setLocationDatas(data.content);
+          setLocDataElements(data.totalElements);
           setLoading(false);
         }
       })
@@ -112,7 +119,10 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     locCatSearch()
       .then((res) => {
         if (res) {
-          setLocationCatDatasStates([{ id: "", name: "Tất cả" }, ...res.data]);
+          setLocationCatDatasStates([
+            { id: "", name: "Tất cả" },
+            ...res?.data.data,
+          ]);
         }
       })
       .catch((e) => {
@@ -128,6 +138,7 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
   function handleGoBack(returnData: any[]) {
     setLocSelectedStates(returnData);
+    setSizeSelectedStates(returnData.length);
   }
 
   const renderItem = ({ item, index }: { item: any; index: number }) => {
@@ -208,22 +219,30 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
                     {item.address}
                   </Text>
 
-                  <View
+                  <Text
                     style={[
-                      BaseStyles.spaceBetween,
-                      BaseStyles.mrBot20,
-                      { alignItems: "center" },
+                      BaseStyles.fontWB,
+                      BaseStyles.t4,
+                      BaseStyles.mrBot5,
                     ]}
                   >
-                    <Text style={[BaseStyles.fontWB, { fontSize: 16 }]}>
-                      Chọn thời gian
-                    </Text>
-                    <DateTimePicker
-                      testID="dateTimePicker"
-                      value={locationDate}
-                      mode="datetime"
-                      display="default"
+                    Chọn thời gian
+                  </Text>
+
+                  <View style={[BaseStyles.spaceBetween, BaseStyles.mrBot20]}>
+                    <ModalInputDate
+                      title="dateTimePicker"
+                      type="date"
                       onChange={onChangeDate}
+                      style={{ flex: 0.69 }}
+                      btnStyle={BaseStyles.inputBox}
+                    />
+                    <ModalInputDate
+                      title="dateTimePicker"
+                      type="time"
+                      onChange={onChangeTime}
+                      style={{ flex: 0.29 }}
+                      btnStyle={BaseStyles.inputBox}
                     />
                   </View>
 
@@ -301,6 +320,7 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
       <Banner
         image="https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg"
         height={160}
+        onBack={navigation.goBack}
       />
 
       <View style={[BaseStyles.containerP20, BaseStyles.flexCollumn]}>
@@ -366,8 +386,11 @@ const CreateTripScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
             <TouchableOpacity
               onPress={removeAllCheckBox}
               style={BaseStyles.btn2}
+              disabled={sizeSelectedStates == 0}
             >
-              <Text style={{ color: "red" }}>Bỏ chọn {sizeSelectedStates}</Text>
+              <Text style={{ color: "red" }}>
+                {sizeSelectedStates > 0 && "Bỏ chọn " + sizeSelectedStates}
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity

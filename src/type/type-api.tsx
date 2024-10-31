@@ -47,3 +47,9 @@ export type PageResponse = {
   numberOfElements: number;
   empty: boolean;
 };
+
+export type Response = {
+  errCode: number;
+  data: any;
+  message: string;
+};

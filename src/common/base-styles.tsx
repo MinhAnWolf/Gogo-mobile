@@ -198,6 +198,12 @@ export const BaseStyles = StyleSheet.create({
   pl20: {
     paddingLeft: 20,
   },
+  pr20: {
+    paddingRight: 20,
+  },
+  pb10: {
+    paddingBottom: 10,
+  },
   pb20: {
     paddingBottom: 20,
   },
@@ -333,6 +339,7 @@ export const BaseStyles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     borderRadius: 10,
+    alignItems: "center",
   },
 
   // Colors custom.
@@ -353,6 +360,9 @@ export const BaseStyles = StyleSheet.create({
   },
 
   //Titles custom.
+  t3: {
+    fontSize: 18,
+  },
   t4: {
     fontSize: 16,
   },
