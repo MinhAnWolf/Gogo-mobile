@@ -34,3 +34,14 @@ export type SettingOptionSelectProp = {
   imgIcon: string;
   navigationScreen: () => void;
 };
+
+export type SearchProp = {
+  setSearch?: any;
+} & ScreenNavigationProp;
+
+export type EateriesProp = {
+  id?: string;
+  name: string;
+  page: number;
+  size: number;
+};

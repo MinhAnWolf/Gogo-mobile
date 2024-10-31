@@ -11,16 +11,25 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
 import { Controller } from "react-hook-form";
-import { CardProp, InputType, SettingOptionSelectProp } from "../type/type";
+import {
+  CardProp,
+  InputType,
+  SearchProp,
+  SettingOptionSelectProp,
+} from "../type/type";
 import React, { useEffect, useRef, useState } from "react";
 import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { ProfileSettingStyles } from "../screens/profile-setting/profile-setting-styles";
 
-export const SearchComponent: React.FC<ScreenNavigationProp> = ({
+export const SearchComponent: React.FC<SearchProp> = ({
   navigation,
+  setSearch,
 }) => {
+  const handleInputChange = (input: string) => {
+    setSearch(input);
+  };
   return (
     <>
       <View style={[BaseStyles.rowFlexStart]}>
@@ -36,6 +45,7 @@ export const SearchComponent: React.FC<ScreenNavigationProp> = ({
         {/* CONTAINER INPUT */}
         <View style={[ComponentStyle.searchContainer]}>
           <TextInput
+            onChangeText={handleInputChange}
             style={BaseStyles.inputSearch}
             placeholder="Search location here"
             onPress={() => navigation.navigate("SearchLocation")}
