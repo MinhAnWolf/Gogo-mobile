@@ -55,18 +55,21 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     const eateries: EateriesProp = {
       name: search,
       page: 0,
-      size: 100,
+      size: 10,
     };
 
     searchEateries(eateries).then((res) => {
-      if (!isNull(res.data.data.content)) {
-        setDataSearch(res.data.data.content);
-      }
+      // if (!isNull(res.data.data.content)) {
+      setDataSearch(res.data.data.content);
+      console.log(res.data.data.content);
+      // }
     });
     // }
   }, [search]);
 
   const renderItem = ({ item, index }: { item: any; index: number }) => {
+    // const firstUrlImg = item.img.split(",")[0].trim();
+    // console.log(firstUrlImg);
     return (
       <>
         {/* RESULT SEARCH */}
@@ -89,7 +92,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
                 BaseStyles.noRowCenter,
               ]}
             >
-              <Text>{item.name}</Text>
+              <Text>{item.eateriesName}</Text>
             </View>
             {/* IMAGE */}
             <View style={[SearchLocaitonStyles.imgSearch]}>
@@ -109,7 +112,6 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
             </View>
           </View>
         </TouchableOpacity>
-        ;
       </>
     );
   };
