@@ -8,12 +8,12 @@ import {
 } from "react-native";
 import { BaseStyles } from "../common/base-styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { ScreenNavigationProp } from "../type/type-screen";
 import { ComponentStyle } from "./component-style";
 import { Controller } from "react-hook-form";
 import {
-  CardProp,
   InputType,
+  ResultSearchProp,
+  SearchHistoryProp,
   SearchProp,
   SettingOptionSelectProp,
 } from "../type/type";
@@ -22,6 +22,7 @@ import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { ProfileSettingStyles } from "../screens/profile-setting/profile-setting-styles";
+import { createSearchHistory } from "../service/SearchHistoryService";
 
 export const SearchComponent: React.FC<SearchProp> = ({
   navigation,
@@ -29,6 +30,15 @@ export const SearchComponent: React.FC<SearchProp> = ({
 }) => {
   const handleInputChange = (input: string) => {
     setSearch(input);
+  };
+
+  const handleEnterKeyBoard = (event: any) => {
+    const data: SearchHistoryProp = {
+      textSearch: event.nativeEvent.text,
+    };
+    createSearchHistory(data).then((res) => {
+      console.log(res);
+    });
   };
   return (
     <>
@@ -49,6 +59,7 @@ export const SearchComponent: React.FC<SearchProp> = ({
             style={BaseStyles.inputSearch}
             placeholder="Search location here"
             onPress={() => navigation.navigate("SearchLocation")}
+            onSubmitEditing={handleEnterKeyBoard}
           />
         </View>
       </View>
@@ -56,7 +67,9 @@ export const SearchComponent: React.FC<SearchProp> = ({
   );
 };
 
-export const Card: React.FC<{ cardProp: CardProp }> = ({ cardProp }) => {
+export const Card: React.FC<{ resultSearch: ResultSearchProp }> = ({
+  resultSearch,
+}) => {
   return (
     <>
       <View style={[ComponentStyle.containerCard, BaseStyles.noRowCenter]}>
@@ -64,7 +77,7 @@ export const Card: React.FC<{ cardProp: CardProp }> = ({ cardProp }) => {
         <View style={[BaseStyles.w30]}>
           <Image
             source={{
-              uri: cardProp.image,
+              uri: resultSearch.img,
             }}
             resizeMode="cover"
             style={[ComponentStyle.imageCard]}
@@ -79,7 +92,7 @@ export const Card: React.FC<{ cardProp: CardProp }> = ({ cardProp }) => {
               BaseStyles.mrBot10,
             ]}
           >
-            {cardProp.title}
+            {resultSearch.name}
           </Text>
           <View style={[BaseStyles.noRowCenter, BaseStyles.mrBot10]}>
             <EvilIcons name="location" size={24} color="black" />
@@ -92,7 +105,7 @@ export const Card: React.FC<{ cardProp: CardProp }> = ({ cardProp }) => {
             <Text style={BaseStyles.fz12}>10h - 24h</Text>
           </View>
           <View style={[BaseStyles.row]}>
-            <StarRatingDisplay rating={cardProp.rate} starSize={25} />
+            <StarRatingDisplay rating={resultSearch.rate} starSize={25} />
           </View>
         </View>
       </View>

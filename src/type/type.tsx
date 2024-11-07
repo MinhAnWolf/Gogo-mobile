@@ -45,3 +45,27 @@ export type EateriesProp = {
   page: number;
   size: number;
 };
+
+export type SearchHistoryProp = {
+  id?: string;
+  textSearch: string;
+  searchBy?: string;
+};
+
+export type ResultSearchProp = {
+  id?: string;
+  rate?: any;
+  img?: string;
+  name?: string;
+  link_gg_map?: string;
+  description?: string;
+  type_eateries?: string;
+  cityCode?: string;
+  catId?: string;
+  name_en?: string;
+  address?: string;
+  phone?: string;
+  visit?: string;
+  upTime?: string;
+  count_rate?: string;
+} & ScreenNavigationProp;

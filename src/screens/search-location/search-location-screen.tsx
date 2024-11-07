@@ -20,8 +20,9 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import { useEffect, useState } from "react";
 import { searchEateries } from "../../service/CommonService";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { isNull } from "../../common/utils/helper-utils";
+import { fetchSearchHistory } from "../../service/SearchHistoryService";
 
 const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -35,23 +36,21 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     formState: { errors },
   } = useForm();
 
-  const cardData: CardProp[] = [
-    {
-      id: "12314",
-      image:
-        "https://www.freevector.com/uploads/vector/preview/12939/FreeVector-Travel-Background.jpg",
-      action: false,
-      comment: "test",
-      rate: "******",
-      content: "12414",
-      title: "Nha Trang city",
-    },
-  ];
   const [search, setSearch] = useState("");
   const [dataSearch, setDataSearch] = useState([]);
+  const [dataSearchHistory, setDataSearchHistory] = useState([]);
 
   useEffect(() => {
-    // if (!isNull(search)) {
+    fetchSearchHistory().then((res) => {
+      console.log(res);
+      setDataSearchHistory(res.data.data);
+    });
+  }, [search]);
+
+  useEffect(() => {
+    console.log("Lengt data: " + dataSearch.length);
+
+    // if (dataSearch.length !== 0) {
     const eateries: EateriesProp = {
       name: search,
       page: 0,
@@ -61,7 +60,6 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     searchEateries(eateries).then((res) => {
       // if (!isNull(res.data.data.content)) {
       setDataSearch(res.data.data.content);
-      console.log(res.data.data.content);
       // }
     });
     // }
@@ -74,7 +72,11 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
       <>
         {/* RESULT SEARCH */}
         <TouchableOpacity
-          onPress={() => navigation.navigate("ListSearchLocation")}
+          onPress={() =>
+            navigation.navigate("ListSearchLocation", {
+              textSearch: search,
+            })
+          }
         >
           <View
             style={[BaseStyles.row, SearchLocaitonStyles.resultSearchContainer]}
@@ -92,7 +94,9 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
                 BaseStyles.noRowCenter,
               ]}
             >
-              <Text>{item.eateriesName}</Text>
+              <Text>
+                {item.name == null || undefined ? item.textSearch : item.name}
+              </Text>
             </View>
             {/* IMAGE */}
             <View style={[SearchLocaitonStyles.imgSearch]}>
@@ -136,6 +140,16 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
             <SearchComponent navigation={navigation} setSearch={setSearch} />
           </View>
         </View>
+
+        {dataSearch.length == 0 ? (
+          <FlatList
+            data={dataSearchHistory}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        ) : (
+          <></>
+        )}
 
         <FlatList
           data={dataSearch}

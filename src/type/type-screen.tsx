@@ -8,7 +8,9 @@ export type SCREEN = {
   Register: undefined;
   Home: undefined;
   Otp: undefined;
-  ListSearchLocation: undefined;
+  ListSearchLocation: {
+    textSearch: string;
+  };
   Notification: undefined;
   DetailSearchLocation: { item: any };
   CreateTrip: undefined;
@@ -23,11 +25,11 @@ export type SCREEN = {
 export type BottomTabNavigatorParamList = {
   Home: undefined;
   Settings: undefined;
-  NewTrip: undefined;
 };
 
 export type ScreenNavigationProp = {
   navigation: NavigationProp<SCREEN>;
+  route?: any;
 };
 
 // export type HomeScreenNavigationProp = CompositeNavigationProp<

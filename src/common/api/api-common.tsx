@@ -16,4 +16,10 @@ export const API = {
 
   // Eateries
   EATERIES_SEARCH: BASE_URL + "/eateries/v2/search",
+
+  // HISTORY
+  SAVE_SEARCH_HISTORY: BASE_URL + "/history/create",
+
+  // FETCH
+  FETCH_SEARCH_HISTORY: BASE_URL + "/history/search",
 };
