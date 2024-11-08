@@ -3,8 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { BottomTabNavigatorParamList } from "../../type/type-screen";
 import HomeStackNavigator from "../stack/home-stack";
 import SettingStackNavigator from "../stack/setting-stack";
-// import CreateTripStackNavigator from "../stack/create-trip-stack";
-
+import Ionicons from "@expo/vector-icons/Ionicons";
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const BottomTabs = () => {
@@ -17,7 +16,12 @@ const BottomTabs = () => {
       <Tab.Screen
         name="Home"
         component={HomeStackNavigator}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" color="black" size={24} />
+          ),
+        }}
       />
       {/* <Tab.Screen
         name="NewTrip"
@@ -27,7 +31,12 @@ const BottomTabs = () => {
       <Tab.Screen
         name="Settings"
         component={SettingStackNavigator}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings-outline" color="black" size={24} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );

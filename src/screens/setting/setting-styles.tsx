@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const ProfileSettingStyles = StyleSheet.create({
+export const SettingStyles = StyleSheet.create({
   avatarContainer: {
     width: "90%",
   },

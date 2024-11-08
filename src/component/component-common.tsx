@@ -21,8 +21,8 @@ import React, { useEffect, useRef, useState } from "react";
 import StarRating, { StarRatingDisplay } from "react-native-star-rating-widget";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { ProfileSettingStyles } from "../screens/profile-setting/profile-setting-styles";
 import { createSearchHistory } from "../service/SearchHistoryService";
+import { SettingStyles } from "../screens/setting/setting-styles";
 
 export const SearchComponent: React.FC<SearchProp> = ({
   navigation,
@@ -67,8 +67,11 @@ export const SearchComponent: React.FC<SearchProp> = ({
   );
 };
 
-export const Card: React.FC<{ resultSearch: ResultSearchProp }> = ({
-  resultSearch,
+export const Card: React.FC<ResultSearchProp> = ({
+  img,
+  name,
+  rate,
+  navigation,
 }) => {
   return (
     <>
@@ -77,7 +80,7 @@ export const Card: React.FC<{ resultSearch: ResultSearchProp }> = ({
         <View style={[BaseStyles.w30]}>
           <Image
             source={{
-              uri: resultSearch.img,
+              uri: img,
             }}
             resizeMode="cover"
             style={[ComponentStyle.imageCard]}
@@ -92,7 +95,7 @@ export const Card: React.FC<{ resultSearch: ResultSearchProp }> = ({
               BaseStyles.mrBot10,
             ]}
           >
-            {resultSearch.name}
+            {name}
           </Text>
           <View style={[BaseStyles.noRowCenter, BaseStyles.mrBot10]}>
             <EvilIcons name="location" size={24} color="black" />
@@ -105,7 +108,7 @@ export const Card: React.FC<{ resultSearch: ResultSearchProp }> = ({
             <Text style={BaseStyles.fz12}>10h - 24h</Text>
           </View>
           <View style={[BaseStyles.row]}>
-            <StarRatingDisplay rating={resultSearch.rate} starSize={25} />
+            <StarRatingDisplay rating={rate} starSize={25} />
           </View>
         </View>
       </View>
@@ -180,31 +183,27 @@ export const OptionSelect: React.FC<SettingOptionSelectProp> = ({
       <TouchableWithoutFeedback onPress={navigationScreen}>
         <View
           style={[
-            ProfileSettingStyles.optionItem,
+            SettingStyles.optionItem,
             BaseStyles.row,
             BaseStyles.boderRadius10,
           ]}
         >
           {/* ICON */}
-          <View
-            style={[ProfileSettingStyles.iconContainer, BaseStyles.centerHight]}
-          >
-            <View
-              style={[ProfileSettingStyles.maskIcon, BaseStyles.centerHight]}
-            >
+          <View style={[SettingStyles.iconContainer, BaseStyles.centerHight]}>
+            <View style={[SettingStyles.maskIcon, BaseStyles.centerHight]}>
               <Image
                 source={{
                   uri: imgIcon,
                 }}
                 style={[
-                  ProfileSettingStyles.imgIconSize,
+                  SettingStyles.imgIconSize,
                   BaseStyles.containerRelative,
                 ]}
                 resizeMode="contain" // Adjust based on how you want to fit the image
               />
             </View>
           </View>
-          <View style={[ProfileSettingStyles.contentContainer]}>
+          <View style={[SettingStyles.contentContainer]}>
             <View style={[BaseStyles.centerHight]}>
               <Text style={[BaseStyles.boldText]}>{title}</Text>
             </View>

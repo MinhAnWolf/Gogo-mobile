@@ -40,29 +40,29 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   const [dataSearch, setDataSearch] = useState([]);
   const [dataSearchHistory, setDataSearchHistory] = useState([]);
 
-  useEffect(() => {
+  const fetchHistoryService = () => {
     fetchSearchHistory().then((res) => {
-      console.log(res);
       setDataSearchHistory(res.data.data);
     });
-  }, [search]);
+  };
 
   useEffect(() => {
     console.log("Lengt data: " + dataSearch.length);
 
-    // if (dataSearch.length !== 0) {
-    const eateries: EateriesProp = {
-      name: search,
-      page: 0,
-      size: 10,
-    };
+    if (dataSearch.length == 0) {
+      fetchHistoryService();
+    }
+    if (search) {
+      const eateries: EateriesProp = {
+        name: search,
+        page: 0,
+        size: 10,
+      };
 
-    searchEateries(eateries).then((res) => {
-      // if (!isNull(res.data.data.content)) {
-      setDataSearch(res.data.data.content);
-      // }
-    });
-    // }
+      searchEateries(eateries).then((res) => {
+        setDataSearch(res.data.data.content);
+      });
+    }
   }, [search]);
 
   const renderItem = ({ item, index }: { item: any; index: number }) => {
@@ -132,7 +132,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
               BaseStyles.noRowCenter,
               { width: "10%" },
             ]}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("HomeScreen")}
           >
             <Ionicons name="arrow-back-outline" size={24} color="black" />
           </TouchableOpacity>
@@ -141,7 +141,7 @@ const SearchLocationScreen: React.FC<ScreenNavigationProp> = ({
           </View>
         </View>
 
-        {dataSearch.length == 0 ? (
+        {search.length == 0 ? (
           <FlatList
             data={dataSearchHistory}
             renderItem={renderItem}

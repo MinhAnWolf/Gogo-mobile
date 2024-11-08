@@ -3,7 +3,7 @@ import type { NavigationProp } from "@react-navigation/native";
 export type SCREEN = {
   HomeScreen: undefined;
   SearchLocation: undefined;
-  ProfileSettings: undefined;
+  SettingOptions: undefined;
   Login: undefined;
   Register: undefined;
   Home: undefined;

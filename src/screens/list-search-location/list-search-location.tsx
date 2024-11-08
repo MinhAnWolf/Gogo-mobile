@@ -3,6 +3,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { ScreenNavigationProp } from "../../type/type-screen";
@@ -20,13 +21,6 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({
   navigation,
   route,
 }) => {
-  const cardProp: CardProp = {
-    id: "1",
-    image:
-      "https://png.pngtree.com/background/20230519/original/pngtree-store-with-hanging-clothing-in-a-high-end-environment-picture-image_2654941.jpg",
-    rate: 3.6,
-    title: "Cửa hàng quần áo",
-  };
   const { textSearch } = route.params;
   const [dataSearch, setDataSearch] = useState([]);
   useEffect(() => {
@@ -43,11 +37,37 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({
     });
   }, []);
 
+  const dataDetailScreen = {
+    address: "This is address",
+    username: "this is username",
+    rating: "this is rating",
+    timeComment: "this is time cmt",
+    content: "this is content",
+  };
+
   const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
-      <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
-        <Card resultSearch={item}></Card>
-      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        <TouchableWithoutFeedback
+          onPress={() => {
+            navigation.navigate("DetailSearchLocation", {
+              item: item,
+            });
+          }}
+        >
+          <View style={[BaseStyles.w90, BaseStyles.ml5, BaseStyles.mrTop20]}>
+            <Card
+              img={item.img}
+              navigation={navigation}
+              name={item.name}
+              rate={item.rate}
+            ></Card>
+          </View>
+        </TouchableWithoutFeedback>
+      </ScrollView>
     );
   };
   return (
@@ -68,7 +88,7 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({
             BaseStyles.noRowCenter,
             { width: "10%" },
           ]}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.goBack()}
         >
           <Ionicons name="arrow-back-outline" size={24} color="black" />
         </TouchableOpacity>
@@ -77,16 +97,12 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({
         </View>
       </View>
       {/* CARD SEARCH */}
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-      >
-        <FlatList
-          data={dataSearch}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </ScrollView>
+
+      <FlatList
+        data={dataSearch}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </>
   );
 };

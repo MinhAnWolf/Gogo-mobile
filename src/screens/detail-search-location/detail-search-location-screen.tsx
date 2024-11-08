@@ -220,7 +220,7 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
 
   return (
     <>
-      <Banner image={item.image} height={200} onBack={navigation.goBack} />
+      <Banner image={item.img} height={200} onBack={navigation.goBack} />
       <View style={DetSearLocStyles.container}>
         <View style={DetSearLocStyles.header}>
           <Text style={DetSearLocStyles.title}>{item.name}</Text>

@@ -18,7 +18,7 @@ const HomeStackNavigator = () => {
         }}
       >
         <HomeStack.Screen
-          name="Home"
+          name="HomeScreen"
           component={HomeScreen}
           options={{ headerShown: false }}
         />
@@ -39,7 +39,6 @@ const HomeStackNavigator = () => {
         />
 
         <HomeStack.Screen name="Notification" component={NotificationScreen} />
-
       </HomeStack.Navigator>
     </>
   );
