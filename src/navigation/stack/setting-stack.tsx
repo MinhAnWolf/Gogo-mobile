@@ -2,6 +2,7 @@ import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SCREEN } from "../../type/type-screen";
 import SettingScreen from "../../screens/setting/setting-screen";
+import EditProfileScreen from "../../screens/setting/setting-component/edit-profile/edit-profile-screen";
 
 const SettingStackNavigator = () => {
   const SettingStack = createNativeStackNavigator<SCREEN>();
@@ -15,6 +16,12 @@ const SettingStackNavigator = () => {
       <SettingStack.Screen
         name="SettingOptions"
         component={SettingScreen}
+        options={{ headerShown: false }}
+      />
+
+      <SettingStack.Screen
+        name="EditProfileScreen"
+        component={EditProfileScreen}
         options={{ headerShown: false }}
       />
     </SettingStack.Navigator>

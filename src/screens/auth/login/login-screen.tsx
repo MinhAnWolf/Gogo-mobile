@@ -28,6 +28,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     name: "email",
     styles: [BaseStyles.input, BaseStyles.mrBot15],
     required: true,
+    exampleValue: "Email",
     secureTextEntry: false,
   };
 
@@ -35,6 +36,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     name: "password",
     styles: [BaseStyles.input, BaseStyles.mrBot15],
     required: true,
+    exampleValue: "Password",
     secureTextEntry: true,
   };
 
@@ -187,20 +189,20 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "rgb(255, 91, 45)", // Màu nền của nút
-    padding: 10, // Khoảng cách bên trong nút
-    borderRadius: 10, // Góc bo tròn của nút
+    backgroundColor: "rgb(255, 91, 45)",
+    padding: 10,
+    borderRadius: 10,
   },
   buttonText: {
-    color: "#FFFFFF", // Màu văn bản
-    fontSize: 16, // Kích thước văn bản
-    textAlign: "center", // Căn giữa văn bản
+    color: "#FFFFFF",
+    fontSize: 16,
+    textAlign: "center",
     fontWeight: "bold",
   },
   buttonImg: {
     width: 100,
     height: 50,
-    borderRadius: 10, // Góc bo tròn của nút
+    borderRadius: 10,
     margin: 10,
   },
 });

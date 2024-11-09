@@ -299,6 +299,18 @@ export const BaseStyles = StyleSheet.create({
     marginLeft: "10%",
   },
 
+  ml12: {
+    marginLeft: "12%",
+  },
+
+  ml13: {
+    marginLeft: "13%",
+  },
+
+  ml15: {
+    marginLeft: "15%",
+  },
+
   ml5: {
     marginLeft: "5%",
   },

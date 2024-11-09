@@ -230,8 +230,8 @@ export const Input = ({
             style={inputType.styles}
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
-            value={value}
-            placeholder={inputType.name}
+            value={value != null || undefined ? value : inputType.value}
+            placeholder={inputType.exampleValue}
             secureTextEntry={inputType.secureTextEntry}
           />
         )}

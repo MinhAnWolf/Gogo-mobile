@@ -20,6 +20,7 @@ export type SCREEN = {
     onGoBack?: (returnData: any) => void;
   };
   CreateLocation: undefined;
+  EditProfileScreen: undefined;
 };
 
 export type BottomTabNavigatorParamList = {

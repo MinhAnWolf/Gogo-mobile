@@ -2,8 +2,6 @@ import { Image, Text, View } from "react-native";
 import { OptionSelect } from "../../component/component-common";
 import { BaseStyles } from "../../common/base-styles";
 import { ScreenNavigationProp } from "../../type/type-screen";
-import { NotificationStyles } from "../notification/notification-styles";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { SettingStyles } from "./setting-styles";
 
 const SettingScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
@@ -59,7 +57,7 @@ const SettingScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
 
         <OptionSelect
           navigationScreen={() => {
-            navigation.navigate("Login");
+            navigation.navigate("EditProfileScreen");
           }}
           title="Edit profile"
           imgIcon="https://img.icons8.com/?size=100&id=O9K5DaypaVKw&format=png&color=000000"

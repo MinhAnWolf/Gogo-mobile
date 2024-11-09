@@ -5,6 +5,8 @@ export interface InputType {
   styles: any;
   required: boolean;
   secureTextEntry: boolean;
+  exampleValue?: string;
+  value?: string;
 }
 
 export interface ModalType {
