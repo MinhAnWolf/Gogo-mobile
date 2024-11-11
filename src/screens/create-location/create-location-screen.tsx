@@ -22,6 +22,7 @@ import {
   wardSearch,
 } from "../../service/CommonService";
 import { ModalInputDate } from "../../component/modal/modal-input-date";
+import { pickImage } from "../../common/utils/helper-utils";
 
 const CreateLocationScreen: React.FC<ScreenNavigationProp> = ({
   navigation,
@@ -68,27 +69,8 @@ const CreateLocationScreen: React.FC<ScreenNavigationProp> = ({
   }
 
   const [image, setImage] = useState<any>(null);
-
-  const pickImage = async () => {
-    if (Platform.OS !== "web") {
-      const { status } =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (status !== "granted") {
-        alert("Ứng dụng cần quyền truy cập vào thư viện ảnh.");
-        return;
-      }
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
+  const selectImg = () => {
+    setImage(pickImage);
   };
 
   const onChangeTimeStart = (value: any) => {
@@ -194,7 +176,7 @@ const CreateLocationScreen: React.FC<ScreenNavigationProp> = ({
         <View>
           <TouchableOpacity
             style={[BaseStyles.bgMain, BaseStyles.btn2]}
-            onPress={pickImage}
+            onPress={selectImg}
           >
             <Text>Chọn ảnh từ thư viện</Text>
           </TouchableOpacity>

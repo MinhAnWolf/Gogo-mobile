@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { ScreenNavigationProp } from "../../../../type/type-screen";
 import { BaseStyles } from "../../../../common/base-styles";
 import { SettingStyles } from "../../setting-styles";
@@ -24,6 +24,14 @@ const EditProfileScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     secureTextEntry: false,
     exampleValue: "Email",
     value: "minhanlefz09@gmail.com",
+  };
+
+  const username: InputType = {
+    name: "username",
+    styles: [BaseStyles.input, BaseStyles.mrBot15],
+    required: true,
+    secureTextEntry: false,
+    exampleValue: "Username",
   };
   return (
     <View
@@ -69,15 +77,40 @@ const EditProfileScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
         </View>
 
         <View style={[LoginStyles.formatScreenLogin, BaseStyles.ml12]}>
-          <Input inputType={email} control={control} />
+          <Input inputType={username} control={control} />
         </View>
 
-        <View style={[LoginStyles.formatScreenLogin, BaseStyles.ml12]}>
+        {/* <View style={[LoginStyles.formatScreenLogin, BaseStyles.ml12]}>
           <Input inputType={email} control={control} />
+        </View> */}
+        <View style={[LoginStyles.formatScreenLogin, BaseStyles.ml12]}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "rgb(255, 60, 167)",
+    padding: 10,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  buttonImg: {
+    width: 100,
+    height: 50,
+    borderRadius: 10,
+    margin: 10,
+  },
+});
 
 export default EditProfileScreen;
