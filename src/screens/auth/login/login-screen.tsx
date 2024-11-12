@@ -30,6 +30,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     required: true,
     exampleValue: "Email",
     secureTextEntry: false,
+    multiline: false,
   };
 
   const password: InputType = {
@@ -38,6 +39,7 @@ const LoginScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     required: true,
     exampleValue: "Password",
     secureTextEntry: true,
+    multiline: false,
   };
 
   // handle event

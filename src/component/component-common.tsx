@@ -71,6 +71,7 @@ export const Card: React.FC<ResultSearchProp> = ({
   img,
   name,
   rate,
+  id,
   navigation,
 }) => {
   return (
@@ -233,6 +234,7 @@ export const Input = ({
             value={value != null || undefined ? value : inputType.value}
             placeholder={inputType.exampleValue}
             secureTextEntry={inputType.secureTextEntry}
+            multiline={inputType.multiline}
           />
         )}
         name={inputType.name}

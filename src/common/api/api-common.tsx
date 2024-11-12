@@ -22,4 +22,7 @@ export const API = {
 
   // FETCH
   FETCH_SEARCH_HISTORY: BASE_URL + "/history/search",
+
+  // COMMENT - RATING - REVIEW
+  ADD_COMMENT: BASE_URL + "/comment/create",
 };

@@ -24,6 +24,7 @@ const EditProfileScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     secureTextEntry: false,
     exampleValue: "Email",
     value: "minhanlefz09@gmail.com",
+    multiline: true,
   };
 
   const username: InputType = {
@@ -32,6 +33,7 @@ const EditProfileScreen: React.FC<ScreenNavigationProp> = ({ navigation }) => {
     required: true,
     secureTextEntry: false,
     exampleValue: "Username",
+    multiline: true,
   };
   return (
     <View

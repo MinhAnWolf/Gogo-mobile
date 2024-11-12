@@ -64,6 +64,7 @@ const ListSearchLocation: React.FC<ScreenNavigationProp> = ({
               navigation={navigation}
               name={item.name}
               rate={item.rate}
+              id={item.eateriesId}
             ></Card>
           </View>
         </TouchableWithoutFeedback>

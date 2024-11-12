@@ -7,6 +7,7 @@ export interface InputType {
   secureTextEntry: boolean;
   exampleValue?: string;
   value?: string;
+  multiline: boolean;
 }
 
 export interface ModalType {
@@ -71,3 +72,15 @@ export type ResultSearchProp = {
   upTime?: string;
   count_rate?: string;
 } & ScreenNavigationProp;
+
+export type CommentProp = {
+  id?: string;
+  eateriesId?: string;
+  rateFood?: string;
+  rateService?: string;
+  rateSpace?: string;
+  content?: string;
+  urlImg?: string;
+};
+
+export type ImgProp = {};

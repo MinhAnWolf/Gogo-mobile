@@ -12,6 +12,7 @@ import {
   Banner,
   ButtonSelect,
   Comment,
+  Input,
   ItemIcon,
   ItemRating,
   ItemTab,
@@ -23,6 +24,7 @@ import { BaseStyles } from "../../common/base-styles";
 import { ModalCustom } from "../../component/modal/modal-custom";
 import { pickImage } from "../../common/utils/helper-utils";
 import { Controller, useForm } from "react-hook-form";
+import { InputType } from "../../type/type";
 
 function OverviewScreen(item: any) {
   return (
@@ -94,8 +96,25 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const onsubmit = (data: any) => {
+    console.log(rating);
     console.log(img);
+    console.log(data);
+    console.log(item.id);
+    const formData = new FormData();
+    formData.set("eateriesId", item.id);
+    formData.set("imgFile", img);
+    formData.set("rate", String(rating));
+    formData.set("content", data.content);
     modalRef.current?.closeModal();
+  };
+
+  const content: InputType = {
+    name: "content",
+    styles: [BaseStyles.inputArea],
+    required: true,
+    exampleValue: "Content",
+    secureTextEntry: false,
+    multiline: true,
   };
 
   const commentScreen = () => {
@@ -119,70 +138,58 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
           height={600}
           ref={modalRef}
           content={
-            <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <View style={BaseStyles.flexCollumn}>
-                  <ScrollView style={[BaseStyles.mrTop10, { flex: 1 }]}>
-                    <View style={DetSearLocStyles.boxRating}>
-                      <StarRating
-                        rating={rating}
-                        onChange={setRating}
-                        enableHalfStar={false}
-                      />
-                    </View>
-                    <ItemRating
-                      title="Đồ ăn"
-                      rating={ratingFood}
-                      onChange={setRatingFood}
-                    />
-                    <ItemRating
-                      title="Dịch vụ"
-                      rating={ratingService}
-                      onChange={setRatingService}
-                    />
-                    <ItemRating
-                      title="Không gian"
-                      rating={ratingDimensional}
-                      onChange={setRatingDimensional}
-                      style={BaseStyles.mrBot15}
-                    />
-                    <TextInput
-                      multiline={true}
-                      style={BaseStyles.inputArea}
-                      placeholder="Viết đánh giá"
-                      placeholderTextColor="gray"
-                    />
-                    <TouchableOpacity
-                      style={[
-                        BaseStyles.btn2,
-                        BaseStyles.bgGray,
-                        BaseStyles.mrTop10,
-                        BaseStyles.mrBot15,
-                        { alignItems: "center" },
-                      ]}
-                      onPress={onSelectImg}
-                    >
-                      <TextIcon text="Thêm hình ảnh và video" icon="camera" />
-                    </TouchableOpacity>
-                  </ScrollView>
-
-                  <TouchableOpacity
-                    style={[
-                      BaseStyles.btn2,
-                      BaseStyles.bgMain,
-                      BaseStyles.mrTop10,
-                      { alignItems: "center" },
-                    ]}
-                    onPress={handleSubmit(onsubmit)}
-                  >
-                    <TextIcon text="Đăng tải" icon="camera" />
-                  </TouchableOpacity>
+            <View style={BaseStyles.flexCollumn}>
+              <ScrollView style={[BaseStyles.mrTop10, { flex: 1 }]}>
+                <View style={DetSearLocStyles.boxRating}>
+                  <StarRating
+                    rating={rating}
+                    onChange={setRating}
+                    enableHalfStar={false}
+                  />
                 </View>
-              )}
-              name={"TEst"}
-              rules={{ required: true }}
-            />
+                <ItemRating
+                  title="Đồ ăn"
+                  rating={ratingFood}
+                  onChange={setRatingFood}
+                />
+                <ItemRating
+                  title="Dịch vụ"
+                  rating={ratingService}
+                  onChange={setRatingService}
+                />
+                <ItemRating
+                  title="Không gian"
+                  rating={ratingDimensional}
+                  onChange={setRatingDimensional}
+                  style={BaseStyles.mrBot15}
+                />
+                <Input inputType={content} control={control} />
+                <TouchableOpacity
+                  style={[
+                    BaseStyles.btn2,
+                    BaseStyles.bgGray,
+                    BaseStyles.mrTop10,
+                    BaseStyles.mrBot15,
+                    { alignItems: "center" },
+                  ]}
+                  onPress={onSelectImg}
+                >
+                  <TextIcon text="Thêm hình ảnh và video" icon="camera" />
+                </TouchableOpacity>
+              </ScrollView>
+
+              <TouchableOpacity
+                style={[
+                  BaseStyles.btn2,
+                  BaseStyles.bgMain,
+                  BaseStyles.mrTop10,
+                  { alignItems: "center" },
+                ]}
+                onPress={handleSubmit(onsubmit)}
+              >
+                <TextIcon text="Đăng tải" icon="camera" />
+              </TouchableOpacity>
+            </View>
           }
         />
 
