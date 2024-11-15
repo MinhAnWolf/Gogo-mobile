@@ -96,15 +96,18 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const onsubmit = (data: any) => {
-    console.log(rating);
-    console.log(img);
-    console.log(data);
-    console.log(item.id);
+    // console.log(rating);
+    // console.log(img);
+    // console.log(data);
+    // console.log(item.id);
+
     const formData = new FormData();
     formData.set("eateriesId", item.id);
     formData.set("imgFile", img);
     formData.set("rate", String(rating));
     formData.set("content", data.content);
+    console.log(formData.get("eateriesId"));
+    console.log("This is formdata: " + formData);
     modalRef.current?.closeModal();
   };
 
