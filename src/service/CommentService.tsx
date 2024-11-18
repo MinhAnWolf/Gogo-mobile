@@ -1,7 +1,8 @@
 import { API } from "../common/api/api-common";
 import axiosInstance from "../interceptor";
-import { CommentProp } from "../type/type";
 
-export const addCommentService = async (data: CommentProp) => {
+export const addCommentService = async (data: any) => {
+  console.log(API.ADD_COMMENT);
+
   return await axiosInstance.post(`${API.ADD_COMMENT}`, data);
 };

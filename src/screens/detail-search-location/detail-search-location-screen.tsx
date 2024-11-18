@@ -24,7 +24,8 @@ import { BaseStyles } from "../../common/base-styles";
 import { ModalCustom } from "../../component/modal/modal-custom";
 import { pickImage } from "../../common/utils/helper-utils";
 import { Controller, useForm } from "react-hook-form";
-import { InputType } from "../../type/type";
+import { CommentProp, InputType } from "../../type/type";
+import { addCommentService } from "../../service/CommentService";
 
 function OverviewScreen(item: any) {
   return (
@@ -96,18 +97,25 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const onsubmit = (data: any) => {
-    // console.log(rating);
-    // console.log(img);
-    // console.log(data);
-    // console.log(item.id);
+    console.log("E");
 
     const formData = new FormData();
-    formData.set("eateriesId", item.id);
-    formData.set("imgFile", img);
-    formData.set("rate", String(rating));
-    formData.set("content", data.content);
-    console.log(formData.get("eateriesId"));
-    console.log("This is formdata: " + formData);
+    const comment: CommentProp = {
+      eateriesId: item.id,
+      content: data.content,
+    };
+    console.log(comment);
+
+    formData.append("comment", String(comment));
+    formData.append("img", img);
+    addCommentService(formData).then(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log(error.response);
+      }
+    );
     modalRef.current?.closeModal();
   };
 
