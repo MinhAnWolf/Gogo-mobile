@@ -97,8 +97,6 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const onsubmit = (data: any) => {
-    console.log("E");
-
     const formData = new FormData();
     const comment: CommentProp = {
       eateriesId: item.id,
@@ -106,14 +104,16 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     };
     console.log(comment);
 
-    formData.append("comment", String(comment));
-    formData.append("img", img);
+    formData.append("comment", "This is content");
+    // formData.append("img", img);
+    console.log(formData);
     addCommentService(formData).then(
       (res) => {
-        console.log(res);
+        console.log("res status: " + res.status);
       },
       (error) => {
-        console.log(error.response);
+        console.log(JSON.stringify(error));
+        console.log("res status: " + error.status);
       }
     );
     modalRef.current?.closeModal();
@@ -158,22 +158,6 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
                     enableHalfStar={false}
                   />
                 </View>
-                <ItemRating
-                  title="Đồ ăn"
-                  rating={ratingFood}
-                  onChange={setRatingFood}
-                />
-                <ItemRating
-                  title="Dịch vụ"
-                  rating={ratingService}
-                  onChange={setRatingService}
-                />
-                <ItemRating
-                  title="Không gian"
-                  rating={ratingDimensional}
-                  onChange={setRatingDimensional}
-                  style={BaseStyles.mrBot15}
-                />
                 <Input inputType={content} control={control} />
                 <TouchableOpacity
                   style={[
