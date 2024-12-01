@@ -76,11 +76,10 @@ export type ResultSearchProp = {
 export type CommentProp = {
   id?: string;
   eateriesId?: string;
-  rateFood?: string;
-  rateService?: string;
-  rateSpace?: string;
   content?: string;
   urlImg?: string;
+  rate?: number;
+  imgFile: any;
 };
 
 export type ImgProp = {};

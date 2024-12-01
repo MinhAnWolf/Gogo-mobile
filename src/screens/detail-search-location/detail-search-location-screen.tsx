@@ -97,17 +97,13 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
   };
 
   const onsubmit = (data: any) => {
-    const formData = new FormData();
     const comment: CommentProp = {
       eateriesId: item.id,
       content: data.content,
+      imgFile: img,
     };
     console.log(comment);
-
-    formData.append("comment", "This is content");
-    // formData.append("img", img);
-    console.log(formData);
-    addCommentService(formData).then(
+    addCommentService(comment).then(
       (res) => {
         console.log("res status: " + res.status);
       },
