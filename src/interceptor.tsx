@@ -27,9 +27,6 @@ axiosInstance.interceptors.request.use(
     const authorization = await getStoreData("authorization");
     config.headers.Authorization = authorization;
     config.headers.id = clientId;
-    console.log("====================================");
-    console.log("By pass interceptor request");
-    console.log("====================================");
     return config;
   },
   (error) => {

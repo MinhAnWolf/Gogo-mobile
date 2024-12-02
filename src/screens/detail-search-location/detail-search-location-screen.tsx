@@ -96,20 +96,27 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     setImg(pickImage);
   };
 
-  const onsubmit = (data: any) => {
+  const onsubmit = async (data: any) => {
     const comment: CommentProp = {
       eateriesId: item.id,
       content: data.content,
       imgFile: img,
     };
-    console.log(comment);
-    addCommentService(comment).then(
+    console.log(img);
+    // const file = await fetch(img._j)
+    //   .then((response) => response.blob())
+    //   .then((blob) => new File([blob], "Test", { type: "image/jpeg" }));
+
+    const formData = new FormData();
+    formData.append("imgFile", img._j.uri);
+    console.log(img.uri);
+    addCommentService(formData).then(
       (res) => {
-        console.log("res status: " + res.status);
+        // console.log("res status: " + res.status);
       },
       (error) => {
         console.log(JSON.stringify(error));
-        console.log("res status: " + error.status);
+        // console.log("res status: " + error.status);
       }
     );
     modalRef.current?.closeModal();
