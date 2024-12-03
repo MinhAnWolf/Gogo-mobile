@@ -108,7 +108,12 @@ const DetailSearchLocationScreen: React.FC<ScreenNavigationProp> = ({
     //   .then((blob) => new File([blob], "Test", { type: "image/jpeg" }));
 
     const formData = new FormData();
-    formData.append("imgFile", img._j.uri);
+    fetch(img._j.uri)
+      .then((response) => response.blob())
+      .then((blob) => {
+        formData.append("imgFile", blob, "test.jpg");
+      })
+      .catch((error) => console.error("Error fetching the file:", error));
     console.log(img.uri);
     addCommentService(formData).then(
       (res) => {
