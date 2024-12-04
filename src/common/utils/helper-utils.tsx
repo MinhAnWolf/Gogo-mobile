@@ -23,6 +23,6 @@ export const pickImage = async () => {
 
   if (!result.canceled) {
     console.log(result);
-    return result.assets[0];
+    return result.assets[0].uri;
   }
 };
